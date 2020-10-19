@@ -36,6 +36,6 @@ export class ApiCallService {
       "neighborhoodName" : "Name",
       "neighboorhoodGroup" : "Name"
     */
-    return this.http.post<any>('http://127.0.0.1:5000/reviews', searchData);
+    return this.http.post<any>('http://127.0.0.1:5000/neighborhoods', searchData);
   }
 }
