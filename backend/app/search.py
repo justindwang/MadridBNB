@@ -10,6 +10,9 @@ class Listings(Resource):
             response = {
                 "listings": []
             }
+            # dictionary that holds an array of dictionaries, each containing data of a single listing
+            # e.g. access listing data "id" of 1st entry - response["listings"][0]["id"]
+
             # for x in listings:
             #     temp = {
                     # "id": x.get_id(),
@@ -18,7 +21,7 @@ class Listings(Resource):
                     # "price": x.get_price()
                     # Accessors for each variable stored in a Listing Object
             #     }
-            #     response['Listings'].append(temp)
+            #     response['listings'].append(temp)
 
             res = make_response(jsonify(response), 200)
             return res
@@ -34,6 +37,9 @@ class Reviews(Resource):
             response = {
                 "reviews": []
             }
+            # dictionary that holds an array of dictionaries, each containing data of a single review
+            # e.g. access review data "id" of 1st entry - response["reviews"][0]["id"]
+
             # for x in reviews:
             #     temp = {
                     # "listing_id": x.get_listing_id(),
@@ -43,7 +49,7 @@ class Reviews(Resource):
                     # "comments": x.get_comments()
                     # Accessors for each variable stored in a Review Object
             #     }
-            #     response['Listings'].append(temp)
+            #     response['reviews'].append(temp)
             res = make_response(jsonify(response), 200)
             return res
         else:
@@ -58,13 +64,16 @@ class Neighborhoods(Resource):
             response = {
                 "neighborhoods": []
             }
+            # dictionary that holds an array of dictionaries, each containing data of a single neighborhood
+            # e.g. access neighborhood data "neighborhoodGroup" of 1st entry - response["neighborhoods"][0]["neighborhoodGroup"]
+
             # for x in neighborhoods:
             #     temp = {
                     # "neighborhoodGroup": x.get_neighborhood_group(),
                     # "neighborhood": x.get_neighborhood()
                     # Accessors for each variable stored in a Neighborhood Object
             #     }
-            #     response['Listings'].append(temp)
+            #     response['neighborhoods'].append(temp)
             res = make_response(jsonify(response), 200)
             return res
         else:
