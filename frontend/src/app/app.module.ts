@@ -3,17 +3,23 @@ import { NgModule } from '@angular/core';
 
 import { HttpClientModule } from '@angular/common/http';
 
-import { AppRoutingModule } from './app-routing.module';
+import { RouterModule, Routes} from '@angular/router';
 import { AppComponent } from './app.component';
+import { ListingsComponent } from './listings/listings.component';
+
+const routes: Routes = [
+  {path: '', component: ListingsComponent},
+];
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    ListingsComponent
   ],
   imports: [
     BrowserModule,
     HttpClientModule,
-    AppRoutingModule
+    RouterModule.forRoot(routes)
   ],
   providers: [],
   bootstrap: [AppComponent]
