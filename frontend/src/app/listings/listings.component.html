@@ -1,0 +1,40 @@
+<h1>MadridBNB</h1>
+<p>Welcome!</p> 
+
+<!-- Search For Neighborhood bar-->
+<div class = "search">
+    <input type="text" placeholder="Search Neighborhood.." #searchbar
+    (keyup) = "setNeighborhood(searchbar.value)">
+</div>
+
+<!-- Dropdown menu for room type-->
+
+<div class ="dropdown-roomtype">
+    <button class="roomtypebtn">Room type</button>
+    <div class="roomtype-content">
+        <a (click)="setRoomType('Entire home/apt')">Entire home/apt</a>
+        <a (click)="setRoomType('Private room')">Private Room</a>
+        <a (click)="setRoomType('Hotel Room')">Hotel Room</a>
+    </div>
+</div>
+
+<!--  Slide Bar for Price Range -->
+<div class ="dropdown-price">
+    <button class="pricebtn">Price Range</button>
+    <div class="price-content">
+        <a (click)="setPriceRange(0, 25)">$0 - $25</a>
+        <a (click)="setPriceRange(25, 50)">$">$25 - $50</a>
+        <a (click)="setPriceRange(50, 75)">$>$50 - $75</a>
+    </div>
+</div>
+
+<button class = "roomtypebtn" type = "submit" (click)="makeSearch(searchForm)"> Search </button>
+
+<!-- Listing Results-->
+<div *ngIf="listings !== undefined">
+    <div *ngFor = "let l of listings"> 
+        <p> {{l.neighborhood}} </p>
+        <p> {{l.roomType}} </p>
+        <p> {{l.price}} </p>
+    </div>
+</div>

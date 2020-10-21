@@ -1,16 +1,27 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
-import { AppRoutingModule } from './app-routing.module';
+import { HttpClientModule } from '@angular/common/http';
+import { ReactiveFormsModule } from '@angular/forms';
+
+import { RouterModule, Routes} from '@angular/router';
 import { AppComponent } from './app.component';
+import { ListingsComponent } from './listings/listings.component';
+
+const routes: Routes = [
+  {path: '', component: ListingsComponent},
+];
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    ListingsComponent
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    HttpClientModule,
+    ReactiveFormsModule,
+    RouterModule.forRoot(routes)
   ],
   providers: [],
   bootstrap: [AppComponent]
