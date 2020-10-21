@@ -1,31 +1,42 @@
 <h1>MadridBNB</h1>
 <p>Welcome!</p> 
 
-<!-- Search For Neighborhood bar-->
-<div class = "search">
-    <input type="text" placeholder="Search Neighborhood..">
-</div>
+<!-- Listing Search is underneath a searchForm-->
+<form [FormGroup]="searchForm" (ngSubmit)="makeSearch(searchForm.value)">
+    <!-- Search For Neighborhood bar-->
+    <div class = "search">
+        <input type="text" placeholder="Search Neighborhood..">
+    </div>
 
-<!-- Dropdown menu for room type-->
-<div class ="dropdown-roomtype">
-    <button class="roomtypebtn">Room type</button>
-    <div class="roomtype-content">
-        <a href="#">Hotel</a>
-        <a href="#">All apartment</a>
-        <a href="#">Single Room</a>
+    <!-- Dropdown menu for room type-->
+    
+    <div class ="dropdown-roomtype">
+        <button class="roomtypebtn">Room type</button>
+        <div class="roomtype-content">
+            <a href="#">Hotel</a>
+            <a href="#">All apartment</a>
+            <a href="#">Single Room</a>
+        </div>
+    </div>
+
+    <!--  Slide Bar for Price Range -->
+    <div class ="dropdown-price">
+        <button class="pricebtn">Price Range</button>
+        <div class="price-content">
+            <a href="#">$0 - $25</a>
+            <a href="#">$25 - $50</a>
+            <a href="#">$50 - $75</a>
+        </div>
+    </div>
+
+    <button class = "roomtypebtn"> Search </button>
+</form>
+
+<!-- Listing Results-->
+<div *ngIf="listings !== undefined">
+    <div *ngFor = "let l of listings"> 
+        <p> {{l.neighborhood}} </p>
+        <p> {{l.roomType}} </p>
+        <p> {{l.price}} </p>
     </div>
 </div>
-
-<!--  Slide Bar for Price Range -->
-<div class ="dropdown-price">
-    <button class="pricebtn">Price Range</button>
-    <div class="price-content">
-        <a href="#">$0 - $25</a>
-        <a href="#">$25 - $50</a>
-        <a href="#">$50 - $75</a>
-    </div>
-</div>
-
-<button class = "roomtypebtn"> Search </button>
-
-<!-- Neighborhood Results-->
