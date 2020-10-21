@@ -2,7 +2,7 @@
 <p>Welcome!</p> 
 
 <!-- Listing Search is underneath a searchForm-->
-<form [FormGroup]="searchForm" (ngSubmit)="makeSearch(searchForm.value)">
+<form [formGroup]="searchForm" (ngSubmit)="makeSearch(searchForm.value)">
     <!-- Search For Neighborhood bar-->
     <div class = "search">
         <input type="text" placeholder="Search Neighborhood..">
