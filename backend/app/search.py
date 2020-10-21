@@ -5,7 +5,7 @@ class Listings(Resource):
     def post(self):
         if request.is_json:
             req = request.get_json()
-            #listings = <PARSER>.search_listings(req.get(neighborhood), req.get(roomType), req.get(priceRange))
+            listings = search_listings(req.get('neighborhood'), req.get('roomType'), req.get('priceRangeLow'), req.get('priceRangeHigh'))
             #sets 'listings' variable to the the expected returned array of Listing objects that meet search criteria (search_listings())
             response = {
                 "listings": []
@@ -13,15 +13,15 @@ class Listings(Resource):
             # dictionary that holds an array of dictionaries, each containing data of a single listing
             # e.g. access listing data "id" of 1st entry - response["listings"][0]["id"]
 
-            # for x in listings:
-            #     temp = {
-                    # "id": x.get_id(),
-                    # "neighborhood": x.get_neighborhood(),
-                    # "roomType": x.get_roomType(),
-                    # "price": x.get_price()
-                    # Accessors for each variable stored in a Listing Object
-            #     }
-            #     response['listings'].append(temp)
+            for x in listings:
+                temp = {
+                    "id": x.get_id(),
+                    "neighborhood": x.get_neighborhood(),
+                    "roomType": x.get_roomType(),
+                    "price": x.get_price()
+                    Accessors for each variable stored in a Listing Object
+                }
+                response['listings'].append(temp)
 
             res = make_response(jsonify(response), 200)
             return res
