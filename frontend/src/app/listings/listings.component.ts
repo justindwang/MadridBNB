@@ -5,8 +5,9 @@ import { FormBuilder } from '@angular/forms';
 @Component({
   selector: 'app-listings',
   templateUrl: './listings.component.html',
-  styleUrls: ['./listings.component.css']
+  styleUrls: ['./listings.component.css'],
 })
+
 export class ListingsComponent implements OnInit {
   searchForm; //search data
   listings; //list of all recieved listings. contains listings objects
@@ -16,22 +17,53 @@ export class ListingsComponent implements OnInit {
     private formBuilder : FormBuilder
   ) 
   {
-    this.searchForm = this.formBuilder.group( //this is the searchData that will be sent via post request
+    this.searchForm = 
       {
         id: null, //this will never be set
         neighborhood: null,
         roomType: null,
-        priceRange: null
-      }
-    );
+        priceRangeLow: null,
+        priceRangeHigh: null
+      };
 
   }
 
   ngOnInit() {
+    
+
   }
+
+  setNeighborhood(neighborhood){
+    this.searchForm.neighborhood = neighborhood;
+    //console.log('SET NEIGHBORHOOD:' + neighborhood);
+  }
+
+  setRoomType(roomType){
+    this.searchForm.roomType = roomType;
+    //console.log('SET ROOM TYPE:' + roomType);
+  }
+
+  setPriceRange(priceRangeLow, priceRangeHigh){
+    this.searchForm.priceRangeLow = priceRangeLow;
+    this.searchForm.priceRangeHigh = priceRangeHigh;
+    //console.log('SET PRICE RANGE:' + priceRangeLow + ',' + priceRangeHigh);
+  }
+
 
   //sends a post request to the server
   makeSearch(searchData){
+    console.log("Sending request");
+    console.log(searchData);
+
+    //reset searchForm
+    this.searchForm = 
+      {
+        id: null, //this will never be set
+        neighborhood: null,
+        roomType: null,
+        priceRangeLow: null,
+        priceRangeHigh: null
+      };
     let response = undefined; //this should be a list of listings objects
     this.API.getListings(searchData) //make the API call
       .subscribe( //this runs when the post request gets a response
