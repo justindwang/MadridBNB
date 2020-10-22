@@ -1,11 +1,12 @@
 from flask import request, jsonify, make_response
 from flask_restful import Resource
+from .parser_listings import listings, search_listings
 
 class Listings(Resource):
     def post(self):
         if request.is_json:
             req = request.get_json()
-            listings = search_listings(req.get('neighborhood'), req.get('roomType'), req.get('priceRangeLow'), req.get('priceRangeHigh'))
+            listings = search_listings(req.get('neighborhood'), req.get('roomType'), req.get('priceRangeHigh'), req.get('priceRangeLow'))
             #sets 'listings' variable to the the expected returned array of Listing objects that meet search criteria (search_listings())
             response = {
                 "listings": []
@@ -15,11 +16,11 @@ class Listings(Resource):
 
             for x in listings:
                 temp = {
-                    "id": x.get_id(),
-                    "neighborhood": x.get_neighborhood(),
-                    "roomType": x.get_roomType(),
-                    "price": x.get_price()
-                    Accessors for each variable stored in a Listing Object
+                    "id": x.id,
+                    "neighborhood": x.neighborhood,
+                    "roomType": x.room_type,
+                    "price": x.price
+                    # Accessors for each variable stored in a Listing Object
                 }
                 response['listings'].append(temp)
 
