@@ -22,8 +22,8 @@ export class ListingsComponent implements OnInit {
         id: null, //this will never be set
         neighborhood: null,
         roomType: null,
-        priceRangeLow: null,
-        priceRangeHigh: null
+        floorprice: null,
+        ceilprice: null
       };
 
   }
@@ -43,11 +43,26 @@ export class ListingsComponent implements OnInit {
     //console.log('SET ROOM TYPE:' + roomType);
   }
 
-  setPriceRange(priceRangeLow, priceRangeHigh){
+  setFloorPrice(floorprice){
+    this.searchForm.floorprice = parseInt(floorprice);
+    //console.log('SET FLOOR PRICE:' + floorprice);
+  }
+
+  setCeilPrice(ceilprice){
+    this.searchForm.ceilprice = parseInt(ceilprice);
+    //console.log('SET CEIL PRICE:' + ceilprice);
+  }
+
+  
+
+  /*oldpricerange
+  #setPriceRange(priceRangeLow, priceRangeHigh){
     this.searchForm.priceRangeLow = priceRangeLow;
     this.searchForm.priceRangeHigh = priceRangeHigh;
     //console.log('SET PRICE RANGE:' + priceRangeLow + ',' + priceRangeHigh);
   }
+  */
+
 
 
   //sends a post request to the server
@@ -61,8 +76,8 @@ export class ListingsComponent implements OnInit {
         id: null, //this will never be set
         neighborhood: null,
         roomType: null,
-        priceRangeLow: null,
-        priceRangeHigh: null
+        floorprice: null,
+        ceilprice: null
       };
     let response = undefined; //this should be a list of listings objects
     this.API.getListings(searchData) //make the API call
