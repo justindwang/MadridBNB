@@ -45,6 +45,12 @@ def run_parser():
 def search_listings(n, r, ceiling, floor):
   x = 0
   myList = []
+  print("ceiling = ")
+  print(ceiling)
+  print(type(ceiling))
+  print("floor = ")
+  print(floor)
+  print(type(floor))
   for i in globals.parsed_data:
     if n == globals.parsed_data[x].neighborhood or n == None:
       if r == globals.parsed_data[x].room_type or r == None:

@@ -6,7 +6,7 @@ class Listings(Resource):
     def post(self):
         if request.is_json:
             req = request.get_json()
-            listings = search_listings(req.get('neighborhood'), req.get('roomType'), req.get('priceRangeHigh'), req.get('priceRangeLow'))
+            listings = search_listings(req.get('neighborhood'), req.get('roomType'), req.get('ceilprice'), req.get('floorprice'))
             #sets 'listings' variable to the the expected returned array of Listing objects that meet search criteria (search_listings())
             response = {
                 "listings": []
@@ -25,6 +25,7 @@ class Listings(Resource):
                 response['listings'].append(temp)
 
             res = make_response(jsonify(response), 200)
+            res.headers.add('Access-Control-Allow-Origin', '*')
             return res
         else:
             return "No JSON received", 400
