@@ -27,20 +27,19 @@
         <a (click)="setPriceRange(50, 75)">$>$50 - $75</a>
     </div>
 </div>
-
-<button class = "roomtypebtn" type = "submit" (click)="makeSearch(searchForm)"> Search </button>
-
 -->
 
 <div class = "floorprice">
     <input type="text" placeholder="Enter low end.." #floorbar
-    (keyup) = "setFloorPrice(searchbar.value)">
+    (keyup) = "setFloorPrice(floorbar.value)">
 </div>
 
 <div class ="ceilprice">
     <input type="text" placeholder="Enter high end." #ceilbar
-    (keyup) = "setCeilPrice(searchbar.value)">
+    (keyup) = "setCeilPrice(ceilbar.value)">
 </div>
+
+<button class = "roomtypebtn" type = "submit" (click)="makeSearch(searchForm)"> Search </button>
 
 <!-- Listing Results-->
 <div *ngIf="listings !== undefined">

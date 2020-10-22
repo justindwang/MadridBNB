@@ -44,12 +44,12 @@ export class ListingsComponent implements OnInit {
   }
 
   setFloorPrice(floorprice){
-    this.searchForm.floorprice = floorprice;
+    this.searchForm.floorprice = parseInt(floorprice);
     //console.log('SET FLOOR PRICE:' + floorprice);
   }
 
   setCeilPrice(ceilprice){
-    this.searchForm.ceilprice = ceilprice;
+    this.searchForm.ceilprice = parseInt(ceilprice);
     //console.log('SET CEIL PRICE:' + ceilprice);
   }
 
