@@ -88,7 +88,7 @@ export class ListingsComponent implements OnInit {
       ).add( //this runs after the post reponse has been recieved
         () => {
           if (response != undefined){ //valid response
-            this.listings = response; //reponse should be a list of listings objects
+            this.listings = response.listings; //reponse should be a list of listings objects
           } else { //invalid response
 
           }
