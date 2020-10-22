@@ -18,7 +18,7 @@
     </div>
 </div>
 
-<!--  Slide Bar for Price Range -->
+<!--  dropdown for Price Range 
 <div class ="dropdown-price">
     <button class="pricebtn">Price Range</button>
     <div class="price-content">
@@ -30,11 +30,31 @@
 
 <button class = "roomtypebtn" type = "submit" (click)="makeSearch(searchForm)"> Search </button>
 
+-->
+
+<div class = "floorprice">
+    <input type="text" placeholder="Enter low end.." #floorbar
+    (keyup) = "setFloorPrice(searchbar.value)">
+</div>
+
+<div class ="ceilprice">
+    <input type="text" placeholder="Enter high end." #ceilbar
+    (keyup) = "setCeilPrice(searchbar.value)">
+</div>
+
 <!-- Listing Results-->
 <div *ngIf="listings !== undefined">
     <div *ngFor = "let l of listings"> 
         <p> {{l.neighborhood}} </p>
         <p> {{l.roomType}} </p>
         <p> {{l.price}} </p>
+    </div>
+</div>
+
+<div *ngIf="listings !== undefined">
+    <div *ngFor = "let l of listings"> 
+        <div class="boxed">
+            Testing!
+          </div>
     </div>
 </div>
