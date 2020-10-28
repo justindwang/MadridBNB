@@ -1,1 +1,11 @@
-<p>deletelisting works!</p>
+<h1> Delete Listing </h1>
+
+<div class ="listingid">
+    <p> <b>Enter listing ID: </b> </p>
+    <input type="text" #setlistingid
+    (keyup) = "setlistingID(setlistingID.value)">
+</div>
+
+<div style = "margin-top: 15px">
+    <button class = "enterbtn" type = "submit" (click)="makeEnter(enterForm)"> ENTER </button>
+</div>
