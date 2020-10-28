@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ApiCallService } from '../api-call.service';
-import { FormBuilder } from '@angular/forms';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-listings',
@@ -9,23 +9,20 @@ import { FormBuilder } from '@angular/forms';
 })
 
 export class AddlistingComponent implements OnInit {
-  enterData; 
-  searchData;//search data
-  listings;
+  listingData;
   
 
   constructor(
     private API : ApiCallService, //service that calls our API
-    private formBuilder : FormBuilder
+    private router : Router
   ) 
   {
-    this.enterData = 
+    this.listingData = 
       {
-        id: null, //this will never be set
+        id: null, //this will not be set
         neighborhood: null,
         roomType: null,
-        floorprice: null,
-        ceilprice: null
+        pricing: null
       };
 
   }
@@ -34,39 +31,28 @@ export class AddlistingComponent implements OnInit {
     
   }
 
-  addNeighborhood(neighborhood){
-    this.enterData.neighborhood = neighborhood;
+  setNeighborhood(neighborhood){
+    this.listingData.neighborhood = neighborhood;
     //console.log('SET NEIGHBORHOOD:' + neighborhood);
   }
 
   setRoomType(roomType){
-    this.enterData.roomType = roomType;
+    this.listingData.roomType = roomType;
     //console.log('SET ROOM TYPE:' + roomType);
   }
 
   addPricing(pricing){
-    this.enterData.pricing = parseInt(pricing);
-    //console.log('SET FLOOR PRICE:' + floorprice);
+    this.listingData.pricing = parseInt(pricing);
   }
 
 
-
   //sends a post request to the server
-  makeSearch(searchData){
+  makeEnter(listingData){
     console.log("Sending request");
-    console.log(searchData);
+    console.log(listingData);
 
-    //reset searchForm
-    this.searchData = 
-      {
-        id: null, //this will never be set
-        neighborhood: null,
-        roomType: null,
-        floorprice: null,
-        ceilprice: null
-      };
     let response = undefined; //this should be a list of listings objects
-    this.API.getListings(searchData) //make the API call
+    this.API.addListing(listingData) //make the API call
       .subscribe( //this runs when the post request gets a response
         (result) => {
           response = result;
@@ -74,9 +60,11 @@ export class AddlistingComponent implements OnInit {
       ).add( //this runs after the post reponse has been recieved
         () => {
           if (response != undefined){ //valid response
-            this.listings = response.listings; //reponse should be a list of listings objects
+            console.log("Valid Reponse");
+            this.router.navigateByUrl('listings');
           } else { //invalid response
-
+            console.log("Invalid Response");
+            this.router.navigateByUrl('listings');
           }
         }
       );

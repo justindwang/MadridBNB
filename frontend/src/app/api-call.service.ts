@@ -21,6 +21,18 @@ export class ApiCallService {
     return this.http.post<any>('http://127.0.0.1:5000/listings', searchData);
   }
 
+  addListing(listingData){
+    return this.http.post<any>('http://127.0.0.1:5000/listings/add', listingData);
+  }
+
+  removeListing(listingData){
+    return this.http.post<any>('http://127.0.0.1:5000/listings/remove', listingData);
+  }
+
+  editListing(listingData){
+    return this.http.post<any>('http://127.0.0.1:5000/listings/edit', listingData);
+  }
+
   getReviews(searchData){
     //returns review data based on inputted searchData
     /*searchData = {
@@ -38,4 +50,5 @@ export class ApiCallService {
     */
     return this.http.post<any>('http://127.0.0.1:5000/neighborhoods', searchData);
   }
+
 }

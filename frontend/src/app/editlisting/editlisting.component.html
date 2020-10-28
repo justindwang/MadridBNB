@@ -3,7 +3,7 @@
 <div class ="listingid">
     <p> <b>Enter listing ID: </b> </p>
     <input type="text" #setlistingid
-    (keyup) = "setlistingID(setlistingID.value)">
+    (keyup) = "setListingID(setlistingid.value)">
 </div>
 
 <!-- Listing Results-->
@@ -20,8 +20,8 @@
 
 <div class ="neighborhood">
     <p> <b>Enter new neighborhood: </b> </p>
-    <input type="text" #addneighborhood
-    (keyup) = "addNeighborhood(addneigborhood.value)">
+    <input type="text" #setneighborhood
+    (keyup) = "setNeighborhood(setneighborhood.value)">
 </div>
 
 
@@ -44,10 +44,10 @@
     <div style= "margin-top: 100px">
         <p> <b>Enter pricing ($ amount):</b> </p>
     </div>
-    <input type="text" #addpricing
-    (keyup) = "addPricing(addpricing.value)">
+    <input type="text" #setpricing
+    (keyup) = "setPricing(setpricing.value)">
 </div>
 
 <div style = "margin-top: 15px">
-    <button class = "enterbtn" type = "submit" (click)="makeEnter(enterForm)"> ENTER </button>
+    <button class = "enterbtn" type = "submit" (click)="makeEnter(listingData)"> ENTER </button>
 </div>
