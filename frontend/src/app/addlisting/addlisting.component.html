@@ -3,7 +3,7 @@
 <div class ="neighborhood">
     <p> <b>Enter neighborhood: </b> </p>
     <input type="text" #addneighborhood
-    (keyup) = "addNeighborhood(addneigborhood.value)">
+    (keyup) = "setNeighborhood(addneighborhood.value)">
 </div>
 
 
@@ -30,7 +30,7 @@
 </div>
 
 <div style = "margin-top: 15px">
-    <button class = "enterbtn" type = "submit" (click)="makeEnter(enterForm)"> ENTER </button>
+    <button class = "enterbtn" type = "submit" (click)="makeEnter(listingData)"> ENTER </button>
 </div>
 
 

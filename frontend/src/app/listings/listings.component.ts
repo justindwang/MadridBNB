@@ -61,15 +61,6 @@ export class ListingsComponent implements OnInit {
     console.log("Sending request");
     console.log(searchData);
 
-    //reset searchForm
-    this.searchForm = 
-      {
-        id: null, //this will never be set
-        neighborhood: null,
-        roomType: null,
-        floorprice: null,
-        ceilprice: null
-      };
     let response = undefined; //this should be a list of listings objects
     this.API.getListings(searchData) //make the API call
       .subscribe( //this runs when the post request gets a response
