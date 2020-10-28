@@ -138,9 +138,6 @@ h1 {
   }
 }
 
-
-
-
-.boxed {
+.box {
   border: 1px solid green ;
 }
