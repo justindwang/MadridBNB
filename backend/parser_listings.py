@@ -60,6 +60,10 @@ def add_listing(neighborhood, room_type, price):
   x.room_type = room_type
   x.price = price
   parsed_data.append(x)
+  new_listing = [x.id, '1', '2', '3', '4', neighborhood, '6', '7', room_type, price, '10', '11', '12', '13', '14', '15']
+  with open('listings.csv', 'a') as csv_listings:
+    writer = csv.writer(csv_listings)
+    writer.writerow(new_listing)
   return x
 
 
@@ -73,6 +77,16 @@ def edit_listing(id, neighborhood, room_type, price):
       return parsed_data[x]
     else:
       x += 1
+  with open('listings.csv', 'w') as csv_listings:
+    parser = csv.writer(csv_listings)
+    for row in parser:
+      if row[0] == id:
+        new_listing = [id, row[1], row[2], row[3], row[4], neighborhood, row[6], row[7], room_type, price, row[10], row[11], row[12], row[13], row[14], row[15]]
+        parser.writerow(new_listing)
+
+
+
+
 
 def delete_listing(id):
   x = 0
@@ -81,6 +95,12 @@ def delete_listing(id):
       parsed_data.pop(x)
     else:
       x += 1
+  with open('listings.csv', 'w') as csv_listings:
+    parser = csv.writer(csv_listings)
+    for row in parser:
+      if row[0] == id:
+        new_listing = ['', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '']
+        parser.writerow(new_listing)
 
       
 
