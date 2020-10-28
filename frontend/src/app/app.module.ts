@@ -6,6 +6,8 @@ import { ReactiveFormsModule } from '@angular/forms';
 
 import { AppComponent } from './app.component';
 import { AppRoutingModule, routingComponents } from './app-routing.module';
+import { DeletelistingComponent } from './deletelisting/deletelisting.component';
+
 
 
 
@@ -13,7 +15,9 @@ import { AppRoutingModule, routingComponents } from './app-routing.module';
 @NgModule({
   declarations: [
     AppComponent,
-   routingComponents
+   routingComponents,
+   DeletelistingComponent,
+  
  
   ],
   imports: [

@@ -9,7 +9,9 @@ import { FormBuilder } from '@angular/forms';
 })
 
 export class AddlistingComponent implements OnInit {
-  enterData; //search data
+  enterData; 
+  searchData;//search data
+  listings;
   
 
   constructor(
@@ -43,19 +45,9 @@ export class AddlistingComponent implements OnInit {
   }
 
   addPricing(pricing){
-    this.enterData.pricing = parseInt(floorprice);
+    this.enterData.pricing = parseInt(pricing);
     //console.log('SET FLOOR PRICE:' + floorprice);
   }
-
-  
-
-  /*oldpricerange
-  #setPriceRange(priceRangeLow, priceRangeHigh){
-    this.searchForm.priceRangeLow = priceRangeLow;
-    this.searchForm.priceRangeHigh = priceRangeHigh;
-    //console.log('SET PRICE RANGE:' + priceRangeLow + ',' + priceRangeHigh);
-  }
-  */
 
 
 
@@ -65,7 +57,7 @@ export class AddlistingComponent implements OnInit {
     console.log(searchData);
 
     //reset searchForm
-    this.searchForm = 
+    this.searchData = 
       {
         id: null, //this will never be set
         neighborhood: null,
