@@ -55,15 +55,6 @@ export class ListingsComponent implements OnInit {
 
   
 
-  /*oldpricerange
-  #setPriceRange(priceRangeLow, priceRangeHigh){
-    this.searchForm.priceRangeLow = priceRangeLow;
-    this.searchForm.priceRangeHigh = priceRangeHigh;
-    //console.log('SET PRICE RANGE:' + priceRangeLow + ',' + priceRangeHigh);
-  }
-  */
-
-
 
   //sends a post request to the server
   makeSearch(searchData){
