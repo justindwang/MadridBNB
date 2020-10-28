@@ -138,10 +138,25 @@ h1 {
   }
 }
 
-nav a:hover{
-
-  color: blue;
-  background-color: white;
+ /* Navigation link styles */
+ nav a {
+  padding: 5px 10px;
+  text-decoration: none;
+  margin-top: 10px;
+  margin-right: 35;
+  display: inline-block;
+  background-color: lightskyblue;
+  border-radius: 4px;
+}
+nav a:visited, a:link {
+  color: black
+}
+nav a:hover {
+  color: black;
+  background-color: rgb(66, 66, 190);
+}
+nav a.active {
+  color: black;
 }
 
 .boxed {
