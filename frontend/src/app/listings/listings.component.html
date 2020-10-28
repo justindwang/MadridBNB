@@ -41,15 +41,20 @@
 
 <button class = "roomtypebtn" type = "submit" (click)="makeSearch(searchForm)"> Search </button>
 
+
 <!-- Listing Results-->
 <div *ngIf="listings !== undefined">
     <div *ngFor = "let l of listings"> 
-        <div class ="box">
         <p> {{l.neighborhood}} </p>
         <p> {{l.roomType}} </p>
         <p> {{l.price}} </p>
-        </div>
     </div>
 </div>
 
+<div *ngIf="listings !== undefined">
+    <div *ngFor = "let l of listings"> 
+        <div class="boxed">
+            Testing!
+          </div>
+    </div>
 </div>
