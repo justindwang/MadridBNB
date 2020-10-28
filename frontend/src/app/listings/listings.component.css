@@ -138,6 +138,12 @@ h1 {
   }
 }
 
+nav a:hover{
+
+  color: blue;
+  background-color: white;
+}
+
 .boxed {
   border: 1px solid green ;
 }

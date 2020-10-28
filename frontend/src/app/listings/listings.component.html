@@ -30,8 +30,10 @@
 </div>
 
 <button class = "roomtypebtn" type = "submit" (click)="makeSearch(searchForm)"> Search </button>
-<button class = "addlistingbtn" type = "submit" (click)="makeSearch(searchForm)"> ADD LISTING+ </button>
 
+<nav>
+    <a routerLink="/addlisting" routerLinkActive= "active">Add Listing </a>
+</nav>
 
 
 <!-- Listing Results-->
@@ -46,3 +48,7 @@
           <button type="button">Delete Listing</button>
     </div>
 </div>
+
+
+
+<router-outlet></router-outlet>
