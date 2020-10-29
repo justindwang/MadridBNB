@@ -1,6 +1,6 @@
 from flask import request, jsonify, make_response
 from flask_restful import Resource
-from .parser_listings import listings, search_listings
+from .parser_listings import listings, search_listings, add_listing, edit_listing, remove_listing
 
 class Listings(Resource):
     def post(self):
@@ -34,9 +34,9 @@ class AddListing(Resource):
     def post(self):
         if request.is_json:
             req = request.get_json()
-            # add_listing(req.get('neighborhood'), req.get('roomType'), req.get('price'))
+            add_listing(req.get('neighborhood'), req.get('roomType'), req.get('price'))
             # expected add listing function that adds listing to csv file given passed neighborhood, roomType, and price parameters
-            res = make_response(200)
+            res = make_response('Added!',200)
             res.headers.add('Access-Control-Allow-Origin', '*')
             return res
         else:
@@ -46,9 +46,9 @@ class RemoveListing(Resource):
     def post(self):
         if request.is_json:
             req = request.get_json()
-            # remove_listing(req.get('listing_id'))
+            remove_listing(req.get('listing_id'))
             # expected remove listing function that removes a listing from csv file given passed listing id
-            res = make_response(200)
+            res = make_response('Removed!', 200)
             res.headers.add('Access-Control-Allow-Origin', '*')
             return res
         else:
@@ -58,9 +58,9 @@ class EditListing(Resource):
     def post(self):
         if request.is_json:
             req = request.get_json()
-            # edit_listing(req.get('listing_id'), req.get('neighborhood'), req.get('roomType'), req.get('price'))
+            edit_listing(req.get('listing_id'), req.get('neighborhood'), req.get('roomType'), req.get('price'))
             # expected edit listing function that edits a listing from csv file given passed parameters
-            res = make_response(200)
+            res = make_response('Edited!', 200)
             res.headers.add('Access-Control-Allow-Origin', '*')
             return res
         else:
