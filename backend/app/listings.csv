@@ -20533,7 +20533,7 @@ id,name,host_id,host_name,neighbourhood_group,neighbourhood,latitude,longitude,r
 20533,Preciosa buhardilla con chimenea,291259029,Isabel,Tetuán,Cuatro Caminos,40.4551,-3.70159,Entire home/apt,48,2,1,9/15/2019,1,1,51
 20534,Piso entero en el centro,291266699,Alejandro,Centro,Embajadores,40.40853,-3.70625,Entire home/apt,150,2,2,9/5/2019,2,5,83
 20535,Habitacion individual con cuarto de baño privado,187873665,Catalina,Salamanca,Castellana,40.43577,-3.68469,Private room,45,2,0,,,1,353
-20536,Modern apartment in the center of Madrid,291281122,Anglo American,Centro,Embajadores,40.41144,-3.7017,Entire home/apt,600,2,0,,,1,236
+20536,Modern apartment in the center of Madrid,291281122,Anglo American,Centro,Embajadores,40.41144,-3.7017,Private room,25,2,0,,,1,236
 20537,Prestigious studio of 45m2 near Cuatro Caminos,169089445,Ghali,Tetuán,Berruguete,40.4559,-3.70355,Entire home/apt,60,1,0,,,1,5
 20538,Preciosa y céntrica habitación,278491498,Carmen,Centro,Justicia,40.42527,-3.70039,Private room,25,2,0,,,7,332
 20539,Madrid a tus pies.,291351497,Olivia,Chamberí,Gaztambide,40.43544,-3.71186,Entire home/apt,100,2,0,,,1,304
@@ -20832,4 +20832,3 @@ id,name,host_id,host_name,neighbourhood_group,neighbourhood,latitude,longitude,r
 20832,Apartamento Confortable a 300 m de la Gran Vía.,182062359,Jose Maciel,Centro,Universidad,40.42182,-3.70336,Entire home/apt,75,2,0,,,2,196
 20833,Estudio en pleno Lavapiés,31425029,Valeska,Centro,Embajadores,40.40896,-3.70107,Entire home/apt,45,2,0,,,1,104
 20834,Chueca  y gran vía central,6903368,Miguel,Centro,Justicia,40.41973,-3.69666,Private room,75,1,0,,,5,268
-20836,1,2,3,4,test1,6,7,Private room,6,10,11,12,13,14,15

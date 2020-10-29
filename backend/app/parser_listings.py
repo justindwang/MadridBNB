@@ -98,8 +98,7 @@ def edit_listing(id, neighborhood, room_type, price):
     try:
       contents.pop(index_to_edit)
     except:
-      print(index_to_edit)
-      print(contents[index_to_edit-1])
+      print("Stdexp error")
     new_listing = str(id)+','+row[1]+','+row[2]+','+row[3]+','+row[4]+','+neighborhood+','+row[6]+','+row[7]+','+room_type+','+str(price)+','+row[10]+','+row[11]+','+row[12]+','+row[13]+','+row[14]+','+row[15]+'\n'
     contents.insert(index_to_edit, new_listing)
     contents = "".join(contents)
@@ -123,13 +122,10 @@ def remove_listing(id):
     for row in parser:
       if row[0] and row[0].isdigit():
         if int(row[0]) == id:
-          print(row[0])
-          print(id)
           break
       index_to_remove += 1
     csv_listings.seek(0)
     contents = csv_listings.readlines()
-    print(index_to_remove)
     contents.pop(index_to_remove)
     contents = "".join(contents)
     with codecs.open("app/listings.csv", "w", encoding="utf-8", errors='ignore') as f:
