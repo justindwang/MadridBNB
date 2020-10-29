@@ -1,0 +1,53 @@
+<h1> Edit Listing </h1>
+
+<div class ="listingid">
+    <p> <b>Enter listing ID: </b> </p>
+    <input type="text" #setlistingid
+    (keyup) = "setListingID(setlistingid.value)">
+</div>
+
+<!-- Listing Results-->
+<div *ngIf="listings !== undefined">
+    <div *ngFor = "let l of listings"> 
+        <div class="boxed">
+            <p> {{l.neighborhood}} </p>
+            <p> {{l.roomType}} </p>
+            <p> {{l.price}} </p>
+          </div>
+    </div>
+</div>
+
+
+<div class ="neighborhood">
+    <p> <b>Enter new neighborhood: </b> </p>
+    <input type="text" #setneighborhood
+    (keyup) = "setNeighborhood(setneighborhood.value)">
+</div>
+
+
+<!-- Dropdown menu for room type-->
+
+<div class ="dropdown-roomtype">
+  <div style="margin-top:15px">
+    <p> <b>Select new room type: </b></p>
+    <button class="roomtypebtn">Room type</button>
+  </div>
+    <div class="roomtype-content">
+        <a (click)="setRoomType('Entire home/apt')">Entire home/apt</a>
+        <a (click)="setRoomType('Private room')">Private Room</a>
+        <a (click)="setRoomType('Hotel Room')">Hotel Room</a>
+    </div>
+</div>
+
+
+<div class ="price">
+    <div style= "margin-top: 100px">
+        <p> <b>Enter pricing ($ amount):</b> </p>
+    </div>
+    <input type="text" #setpricing
+    (keyup) = "setPricing(setpricing.value)">
+</div>
+
+<div style = "margin-top: 15px">
+    <button class = "enterbtn" type = "submit" (click)="makeEnter(listingData)"> ENTER </button>
+</div>

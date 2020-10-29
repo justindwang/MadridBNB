@@ -18,16 +18,6 @@
     </div>
 </div>
 
-<!--  dropdown for Price Range 
-<div class ="dropdown-price">
-    <button class="pricebtn">Price Range</button>
-    <div class="price-content">
-        <a (click)="setPriceRange(0, 25)">$0 - $25</a>
-        <a (click)="setPriceRange(25, 50)">$">$25 - $50</a>
-        <a (click)="setPriceRange(50, 75)">$>$50 - $75</a>
-    </div>
-</div>
--->
 
 <div class = "floorprice">
     <input type="text" placeholder="Enter low end.." #floorbar
@@ -41,19 +31,25 @@
 
 <button class = "roomtypebtn" type = "submit" (click)="makeSearch(searchForm)"> Search </button>
 
+<nav>
+    <a routerLink="/addlisting" routerLinkActive= "active">Add Listing+ </a>
+    <a routerLink="/editlisting" routerLinkActive= "active">Edit Listing </a>
+    <a routerLink="/deletelisting" routerLinkActive= "active">Delete Listing </a>
+    
+</nav>
+
+
 <!-- Listing Results-->
 <div *ngIf="listings !== undefined">
     <div *ngFor = "let l of listings"> 
-        <p> {{l.neighborhood}} </p>
-        <p> {{l.roomType}} </p>
-        <p> {{l.price}} </p>
-    </div>
-</div>
-
-<div *ngIf="listings !== undefined">
-    <div *ngFor = "let l of listings"> 
         <div class="boxed">
-            Testing!
+            <p> {{l.neighborhood}} </p>
+            <p> {{l.roomType}} </p>
+            <p> {{l.price}} </p>
           </div>
     </div>
 </div>
+
+
+
+<router-outlet></router-outlet>

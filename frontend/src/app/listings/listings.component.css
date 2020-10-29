@@ -138,8 +138,26 @@ h1 {
   }
 }
 
-
-
+ /* Navigation link styles */
+ nav a {
+  padding: 10px 10px;
+  text-decoration: none;
+  margin-top: 10px;
+  margin-left: 10px;
+  display: inline-block;
+  background-color: lightskyblue;
+  border-radius: 4px;
+}
+nav a:visited, a:link {
+  color: black
+}
+nav a:hover {
+  color: black;
+  background-color: rgb(66, 66, 190);
+}
+nav a.active {
+  color: black;
+}
 
 .boxed {
   border: 1px solid green ;

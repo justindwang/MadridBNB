@@ -4,24 +4,22 @@ import { NgModule } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
 import { ReactiveFormsModule } from '@angular/forms';
 
-import { RouterModule, Routes} from '@angular/router';
 import { AppComponent } from './app.component';
-import { ListingsComponent } from './listings/listings.component';
-
-const routes: Routes = [
-  {path: '', component: ListingsComponent},
-];
+import { AppRoutingModule, routingComponents } from './app-routing.module';
 
 @NgModule({
   declarations: [
     AppComponent,
-    ListingsComponent
+   routingComponents,
+
+
   ],
   imports: [
     BrowserModule,
     HttpClientModule,
     ReactiveFormsModule,
-    RouterModule.forRoot(routes)
+    AppRoutingModule
+
   ],
   providers: [],
   bootstrap: [AppComponent]
