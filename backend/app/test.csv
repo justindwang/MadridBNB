@@ -6,4 +6,6 @@ id,name,host_id,host_name,neighbourhood_group,neighbourhood,latitude,longitude,r
 26825,Single Room whith private Bathroom,114340,Agustina,Arganzuela,Legazpi,40.38985,-3.69011,Private room,25,2,136,7/10/2019,1.19,1,337
 30320,Great Vacational Apartments,130907,Dana,Centro,Sol,40.41552,-3.70346,Entire home/apt,65,5,168,7/9/2019,1.5,3,322
 30959,Beautiful loft in Madrid Center,132883,Angela,Centro,Embajadores,40.41111,-3.70269,Entire home/apt,54,3,8,5/30/2017,0.15,1,0
-1,1,2,3,4,test_neighborhood,6,7,test_roomType,100,10,11,12,13,14,15
+1,1,2,3,4,test1,6,7,test2,145,10,11,12,13,14,15
+3,1,2,3,4,test_neighborhood2,6,7,test_roomType2,101,10,11,12,13,14,15
+5,1,2,3,4,test_neighborhood6,6,7,test_roomType2,170,10,11,12,13,14,15
