@@ -71,7 +71,7 @@ def add_listing(neighborhood, room_type, price):
   x.price = price
   globals.parsed_data.append(x)
   new_listing = [x.id, '1', '2', '3', '4', x.neighborhood, '6', '7', x.room_type, x.price, '10', '11', '12', '13', '14', '15']
-  with codecs.open("app/test.csv", 'a', encoding="utf-8", errors='ignore') as csv_listings:
+  with codecs.open("app/listings.csv", 'a', encoding="utf-8", errors='ignore') as csv_listings:
     writer = csv.writer(csv_listings)
     writer.writerow(new_listing)
   return x
@@ -83,26 +83,23 @@ def edit_listing(id, neighborhood, room_type, price):
       globals.parsed_data[x].neighborhood = neighborhood
       globals.parsed_data[x].room_type = room_type
       globals.parsed_data[x].price = price
-      return globals.parsed_data[x]
     else:
       x += 1
-  with codecs.open("app/test.csv", 'w', encoding="utf-8", errors='ignore') as csv_listings:
-    parser = csv.writer(csv_listings)
+  index_to_edit = 0
+  with codecs.open("app/listings.csv", 'r', encoding="utf-8", errors='ignore') as csv_listings:
+    parser = csv.reader(csv_listings)
     for row in parser:
       if row[0] and row[0].isdigit():
         if int(row[0]) == id:
-          # print("wassup3")
-          # print(index_to_remove)
           break
-      index_to_remove += 1
+      index_to_edit += 1
     csv_listings.seek(0)
     contents = csv_listings.readlines()
-    contents.pop(index_to_remove)
-    new_listing = id+','+row[1]+','+row[2]+','+row[3]+','+row[4]+','+neighborhood+','+row[6]+','+row[7]+','+room_type+','+price+','+row[10]+','+row[11]+','+row[12]+','+row[13]+','+row[14]+','+row[15]
-    print(new_listing)
-    contents.insert(index_to_remove, new_listing)
+    contents.pop(index_to_edit)
+    new_listing = str(id)+','+row[1]+','+row[2]+','+row[3]+','+row[4]+','+neighborhood+','+row[6]+','+row[7]+','+room_type+','+str(price)+','+row[10]+','+row[11]+','+row[12]+','+row[13]+','+row[14]+','+row[15]+'\n'
+    contents.insert(index_to_edit, new_listing)
     contents = "".join(contents)
-    with codecs.open("app/test.csv", "w", encoding="utf-8", errors='ignore') as f:
+    with codecs.open("app/listings.csv", "w", encoding="utf-8", errors='ignore') as f:
       f.write(contents)
     # for row in parser:
     #   if row[0] == id:
@@ -111,32 +108,27 @@ def edit_listing(id, neighborhood, room_type, price):
 
 def remove_listing(id):
   x = 0
-  # print(id)
-  # print(type(id))
   for i in globals.parsed_data:
     if id == int(globals.parsed_data[x].id):
-      print("wassup2")
       globals.parsed_data.pop(x)
     else:
-      print(x, globals.parsed_data[x].id)
-      print(type(globals.parsed_data[x].id))
       x += 1
   index_to_remove = 0
-  with codecs.open("app/test.csv", "r", encoding="utf-8", errors='ignore') as csv_listings:
+  with codecs.open("app/listings.csv", "r", encoding="utf-8", errors='ignore') as csv_listings:
     parser = csv.reader(csv_listings)
     for row in parser:
       if row[0] and row[0].isdigit():
         if int(row[0]) == id:
-          print("wassup3")
-          print(index_to_remove)
+          print(row[0])
+          print(id)
           break
       index_to_remove += 1
     csv_listings.seek(0)
     contents = csv_listings.readlines()
+    print(index_to_remove)
     contents.pop(index_to_remove)
-    print(contents)
     contents = "".join(contents)
-    with codecs.open("app/test.csv", "w", encoding="utf-8", errors='ignore') as f:
+    with codecs.open("app/listings.csv", "w", encoding="utf-8", errors='ignore') as f:
       f.write(contents)
   # with open("app/test.csv", 'w') as csv_listings:
   #   parser = csv.writer(csv_listings)
