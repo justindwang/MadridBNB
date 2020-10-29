@@ -19,7 +19,7 @@ class listings:
 
 # Opening file and setting up parser for read mode
 def run_parser():
-  with codecs.open("app/test.csv", "r", encoding="utf-8", errors='ignore') as csv_listings:
+  with codecs.open("app/listings.csv", "r", encoding="utf-8", errors='ignore') as csv_listings:
     parser = csv.reader(csv_listings)
     for row in parser:
         if globals.line_count == 0:
@@ -51,7 +51,7 @@ def search_listings(n, r, ceiling, floor):
   if ceiling == None or floor == None:
     return myList
   for i in globals.parsed_data:
-    if n == globals.parsed_data[x].neighborhood or n == None:
+    if n == globals.parsed_data[x].neighborhood or n == None or n == "":
       if r == globals.parsed_data[x].room_type or r == None:
         if int(globals.parsed_data[x].price) >= floor and int(globals.parsed_data[x].price) <= ceiling:
           myList.append(globals.parsed_data[x])
@@ -62,10 +62,10 @@ def add_listing(neighborhood, room_type, price):
   with codecs.open('app/id.txt', 'r', encoding="utf-8", errors='ignore') as f:
     id_counter = int(f.read())
   id_counter += 1
-  with codecs.open('app/id.txt', 'w', encoding="utf-8") as f:
+  with codecs.open('app/id.txt', 'w', encoding="utf-8", errors='ignore') as f:
     f.write(str(id_counter))
   x = listings()
-  x.id = id_counter
+  x.id = str(id_counter)
   x.neighborhood = neighborhood
   x.room_type = room_type
   x.price = price
@@ -95,7 +95,11 @@ def edit_listing(id, neighborhood, room_type, price):
       index_to_edit += 1
     csv_listings.seek(0)
     contents = csv_listings.readlines()
-    contents.pop(index_to_edit)
+    try:
+      contents.pop(index_to_edit)
+    except:
+      print(index_to_edit)
+      print(contents[index_to_edit-1])
     new_listing = str(id)+','+row[1]+','+row[2]+','+row[3]+','+row[4]+','+neighborhood+','+row[6]+','+row[7]+','+room_type+','+str(price)+','+row[10]+','+row[11]+','+row[12]+','+row[13]+','+row[14]+','+row[15]+'\n'
     contents.insert(index_to_edit, new_listing)
     contents = "".join(contents)

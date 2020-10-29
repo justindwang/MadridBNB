@@ -20832,4 +20832,4 @@ id,name,host_id,host_name,neighbourhood_group,neighbourhood,latitude,longitude,r
 20832,Apartamento Confortable a 300 m de la Gran Vía.,182062359,Jose Maciel,Centro,Universidad,40.42182,-3.70336,Entire home/apt,75,2,0,,,2,196
 20833,Estudio en pleno Lavapiés,31425029,Valeska,Centro,Embajadores,40.40896,-3.70107,Entire home/apt,45,2,0,,,1,104
 20834,Chueca  y gran vía central,6903368,Miguel,Centro,Justicia,40.41973,-3.69666,Private room,75,1,0,,,5,268
-20835,1,2,3,4,test_neighborhood,6,7,test_roomType,100,10,11,12,13,14,15
+20836,1,2,3,4,test1,6,7,Private room,6,10,11,12,13,14,15
