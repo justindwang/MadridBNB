@@ -3,11 +3,11 @@
 <div class ="listingid">
     <p> <b>Enter listing ID: </b> </p>
     <input type="text" #setlistingid
-    (keyup) = "setlistingID(setlistingID.value)">
+    (keyup) = "setlistingID(setlistingid.value)">
 </div>
 
 <div style = "margin-top: 15px">
-    <button class = "enterbtn" type = "submit" (click)="makeEnter(enterForm)"> ENTER </button>
+    <button class = "enterbtn" type = "submit" (click)="makeEnter(listingData)"> ENTER </button>
 </div>
 
 <div class="alert">

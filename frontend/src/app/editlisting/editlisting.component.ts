@@ -56,7 +56,7 @@ export class EditlistingComponent implements OnInit {
     console.log(listingData);
 
     let response = undefined; //this should be a list of listings objects
-    this.API.addListing(listingData) //make the API call
+    this.API.editListing(listingData) //make the API call
       .subscribe( //this runs when the post request gets a response
         (result) => {
           response = result;
