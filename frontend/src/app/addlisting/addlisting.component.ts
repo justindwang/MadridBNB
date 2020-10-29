@@ -22,7 +22,7 @@ export class AddlistingComponent implements OnInit {
         id: null, //this will not be set
         neighborhood: null,
         roomType: null,
-        pricing: null
+        price: null
       };
 
   }
@@ -42,7 +42,7 @@ export class AddlistingComponent implements OnInit {
   }
 
   addPricing(pricing){
-    this.listingData.pricing = parseInt(pricing);
+    this.listingData.price = parseInt(pricing);
   }
 
 
@@ -62,6 +62,7 @@ export class AddlistingComponent implements OnInit {
           if (response != undefined){ //valid response
             console.log("Valid Reponse");
             this.router.navigateByUrl('listings');
+            console.log(response);
           } else { //invalid response
             console.log("Invalid Response");
             this.router.navigateByUrl('listings');

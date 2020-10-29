@@ -50,6 +50,7 @@ export class DeletelistingComponent implements OnInit {
           if (response != undefined){ //valid response
             console.log("Valid Reponse");
             this.router.navigateByUrl('listings');
+            console.log(response);
           } else { //invalid response
             console.log("Invalid Response");
             this.router.navigateByUrl('listings');

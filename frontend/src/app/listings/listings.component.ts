@@ -71,8 +71,10 @@ export class ListingsComponent implements OnInit {
         () => {
           if (response != undefined){ //valid response
             this.listings = response.listings; //reponse should be a list of listings objects
+            console.log("Valid Response");
+            console.log(response);
           } else { //invalid response
-
+            console.log("Invalid Response");
           }
         }
       );

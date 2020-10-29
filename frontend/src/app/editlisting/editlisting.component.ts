@@ -22,7 +22,7 @@ export class EditlistingComponent implements OnInit {
         id: null,
         neighborhood: null,
         roomType: null,
-        pricing: null
+        price: null
       };
 
   }
@@ -46,7 +46,7 @@ export class EditlistingComponent implements OnInit {
   }
 
   setPricing(pricing){
-    this.listingData.pricing = parseInt(pricing);
+    this.listingData.price = parseInt(pricing);
   }
 
 
@@ -66,6 +66,7 @@ export class EditlistingComponent implements OnInit {
           if (response != undefined){ //valid response
             console.log("Valid Reponse");
             this.router.navigateByUrl('listings');
+            console.log(response);
           } else { //invalid response
             console.log("Invalid Response");
             this.router.navigateByUrl('listings');
