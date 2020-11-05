@@ -1,6 +1,6 @@
 from flask import request, jsonify, make_response
 from flask_restful import Resource
-from .parser_listings import listings, search_listings, add_listing, edit_listing, remove_listing
+from .parser_listings import listings, search_listings, add_listing, edit_listing, remove_listing, get_average, get_cheap3, get_expensive3
 
 class Listings(Resource):
     def post(self):
@@ -9,7 +9,10 @@ class Listings(Resource):
             listings = search_listings(req.get('neighborhood'), req.get('roomType'), req.get('ceilprice'), req.get('floorprice'))
             #sets 'listings' variable to the the expected returned array of Listing objects that meet search criteria (search_listings())
             response = {
-                "listings": []
+                "listings": [],
+                "average_price": 0,
+                "cheap_listings": [],
+                "expensive_listings": []
             }
             # dictionary that holds an array of dictionaries, each containing data of a single listing
             # e.g. access listing data "id" of 1st entry - response["listings"][0]["id"]
@@ -24,6 +27,30 @@ class Listings(Resource):
                 }
                 response['listings'].append(temp)
 
+            response['average_price'] = get_average(listings)
+
+            cheap3 = get_cheap3(listings)
+            for x in cheap3:
+                temp1 = {
+                    "id": x.id,
+                    "neighborhood": x.neighborhood,
+                    "roomType": x.room_type,
+                    "price": x.price
+                    # Accessors for each variable stored in a Listing Object
+                }
+                response['cheap_listings'].append(temp1)
+
+            expensive3 = get_expensive3(listings)
+            for x in expensive3:
+                temp2 = {
+                    "id": x.id,
+                    "neighborhood": x.neighborhood,
+                    "roomType": x.room_type,
+                    "price": x.price
+                    # Accessors for each variable stored in a Listing Object
+                }
+                response['expensive_listings'].append(temp2)
+            
             res = make_response(jsonify(response), 200)
             res.headers.add('Access-Control-Allow-Origin', '*')
             return res

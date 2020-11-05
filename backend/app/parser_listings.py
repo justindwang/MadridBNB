@@ -3,6 +3,7 @@ import csv
 import io
 import re
 import codecs
+import heapq
 from app import globals
 
 class listings:
@@ -43,37 +44,38 @@ def run_parser():
   #   print('Finished. Line count = ', count)
 
 
-def average_price(list):
+def get_average(list):
   x = 0
   numerator = 0
   denominator = 0
   for i in list:
-    if list[x].neighborhood == n:
-      numerator += list[x].price
-      denominator += 1
+    numerator += int(list[x].price)
+    denominator += 1
     x += 1
   average = numerator / denominator
-  return average
+  return round(average, 2)
 
-def highest_3(list):
-  x = 0
-  price_list = []
-  high = []
-  for i in list:
-    price_list.append(list[x].price)
-    x += 1
-  high = heapq.nlargest(3,price_list)
+def get_expensive3(list):
+  high = [None, None, None]
+  newlist = sorted(list, key=lambda x: int(x.price), reverse=False)
+  y = 0
+  for i in newlist:
+    if y == 3:
+        break
+    high[y] = newlist[len(newlist)-(y+1)]
+    y += 1
   return high
 
-def lowest_3(list):
-  x = 0
-  price_list = []
-  low = []
-  for i in list:
-    price_list.append(list[x].price)
-    x += 1
-  low = heapq.nsmallest(3,price_list)
-  return low 
+def get_cheap3(list):
+  low = [None, None, None]
+  newlist = sorted(list, key=lambda x: int(x.price), reverse=False)
+  y = 0
+  for i in newlist:
+    if y == 3:
+      break
+    low[y] = newlist[y]
+    y += 1
+  return low
 
 def search_listings(n, r, ceiling, floor):
   x = 0
