@@ -16,7 +16,8 @@ export class ListingsComponent implements OnInit {
   cheap_listings;
   expensive_listings;
 
-  analytic_display;
+  cheap = false;
+  expensive = true;
 
   constructor(
     private API : ApiCallService, //service that calls our API
@@ -60,7 +61,13 @@ export class ListingsComponent implements OnInit {
   }
 
   toggle_display(string){
-    this.analytic_display = string;
+    if (string == 'cheap'){
+      this.cheap = true;
+      this.expensive = false;
+    } else if (string == 'expensive'){
+      this.expensive = true;
+      this.cheap = false;
+    }
   }
 
   
