@@ -43,11 +43,24 @@ def run_parser():
   #   print('Finished. Line count = ', count)
 
 
-
+def average_price(n):
+  x = 0
+  numerator = 0
+  denominator = 0
+  for i in globals.parsed_data:
+    if globals.parsed_data[x].neighborhood == n:
+      numerator += globals.parsed_data[x].price
+      denominator += 1
+    x += 1
+  average = numerator / denominator
+  return average
 
 def search_listings(n, r, ceiling, floor):
   x = 0
   myList = []
+  price_list = []
+  high = []
+  low = []
   if ceiling == None or floor == None:
     return myList
   for i in globals.parsed_data:
@@ -55,8 +68,11 @@ def search_listings(n, r, ceiling, floor):
       if r == globals.parsed_data[x].room_type or r == None:
         if int(globals.parsed_data[x].price) >= floor and int(globals.parsed_data[x].price) <= ceiling:
           myList.append(globals.parsed_data[x])
+          price_list.append(globals.parsed_data[x].price)
     x += 1
-  return myList
+  high = heapq.nlargest(3,price_list)
+  low = heapq.nsmallest(3,price_list)
+  return myList, high, low
 
 def add_listing(neighborhood, room_type, price):
   with codecs.open('app/id.txt', 'r', encoding="utf-8", errors='ignore') as f:
