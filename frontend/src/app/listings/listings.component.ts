@@ -12,6 +12,12 @@ export class ListingsComponent implements OnInit {
   searchForm; //search data
   listings; //list of all recieved listings. contains listings objects
 
+  average_price;
+  cheap_listings;
+  expensive_listings;
+
+  analytic_display;
+
   constructor(
     private API : ApiCallService, //service that calls our API
     private formBuilder : FormBuilder
@@ -53,6 +59,10 @@ export class ListingsComponent implements OnInit {
     //console.log('SET CEIL PRICE:' + ceilprice);
   }
 
+  toggle_display(string){
+    this.analytic_display = string;
+  }
+
   
 
 
@@ -71,6 +81,10 @@ export class ListingsComponent implements OnInit {
         () => {
           if (response != undefined){ //valid response
             this.listings = response.listings; //reponse should be a list of listings objects
+            this.cheap_listings = response.cheap_listings;
+            this.expensive_listings = response.expensive_listings;
+            this.average_price = response.average_price;
+
             console.log("Valid Response");
             console.log(response);
           } else { //invalid response
