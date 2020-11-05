@@ -3,6 +3,7 @@ import csv
 import io
 import re
 import codecs
+import heapq
 from app import globals
 
 class listings:
@@ -43,7 +44,38 @@ def run_parser():
   #   print('Finished. Line count = ', count)
 
 
+def get_average(list):
+  x = 0
+  numerator = 0
+  denominator = 0
+  for i in list:
+    numerator += int(list[x].price)
+    denominator += 1
+    x += 1
+  average = numerator / denominator
+  return round(average, 2)
 
+def get_expensive3(list):
+  high = [None, None, None]
+  newlist = sorted(list, key=lambda x: int(x.price), reverse=False)
+  y = 0
+  for i in newlist:
+    if y == 3:
+        break
+    high[y] = newlist[len(newlist)-(y+1)]
+    y += 1
+  return high
+
+def get_cheap3(list):
+  low = [None, None, None]
+  newlist = sorted(list, key=lambda x: int(x.price), reverse=False)
+  y = 0
+  for i in newlist:
+    if y == 3:
+      break
+    low[y] = newlist[y]
+    y += 1
+  return low
 
 def search_listings(n, r, ceiling, floor):
   x = 0
@@ -57,6 +89,7 @@ def search_listings(n, r, ceiling, floor):
           myList.append(globals.parsed_data[x])
     x += 1
   return myList
+
 
 def add_listing(neighborhood, room_type, price):
   with codecs.open('app/id.txt', 'r', encoding="utf-8", errors='ignore') as f:
