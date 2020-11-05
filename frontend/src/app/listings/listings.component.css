@@ -1,6 +1,3 @@
-p { 
-    color:blue; 
-  }
 
 h1 {
     color:red;
@@ -161,4 +158,9 @@ nav a.active {
 
 .boxed {
   border: 1px solid green ;
+}
+
+.column {
+  float:left;
+  width: 50%;
 }
