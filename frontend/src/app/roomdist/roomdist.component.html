@@ -1,1 +1,29 @@
-<p>roomdist works!</p>
+<h1> Distribution of Room Type </h1>
+
+
+<div id = "column1">
+    <h2> Madrid</h2>
+       <p><b>insert pie chart</b></p>
+        <div *ngFor = "let l of roomtype_madrid"> 
+            <div class="boxed">
+                <p> ID: {{l.id}} </p>
+                <p> {{l.neighborhood}} </p>
+                <p> {{l.roomType}} </p>
+                <p> ${{l.price}} </p>
+            </div>
+        </div>
+</div>
+
+<div id = "column2">
+    <h2> Most Popular Neighborhoods</h2>
+        <p><b>insert pie charts</b></p>
+            <div *ngFor = "let l of roomtype_neighborhood"> 
+                <div class="boxed">
+                <p> ID: {{l.id}} </p>
+                <p> {{l.neighborhood}} </p>
+                <p> {{l.roomType}} </p>
+                <p> ${{l.price}} </p>
+            </div>
+        </div>
+</div>
+

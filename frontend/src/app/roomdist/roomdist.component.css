@@ -1,0 +1,36 @@
+h1{
+
+    color: darkblue;
+    font-family: arial ;
+
+}
+
+  
+  div {
+    float: left;
+    height: 470px;
+    padding: 0 10px;
+    margin-bottom: 25px;
+    text-align: center;
+  }
+  
+  #column1 {
+    background-color: #a1edcc;
+    width: 50%;
+
+
+   
+ 
+  }
+  
+  #column2 {
+    background-color: #a0e9ed;
+    width: 50%;
+    
+  }
+  
+  
+  h2 {
+    color: #000000;
+    text-align: center;
+  }

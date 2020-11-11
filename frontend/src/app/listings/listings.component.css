@@ -1,13 +1,16 @@
 
 h1 {
     color:red;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
   }
 
 
 /* Add a black background color to the top navigation */
 .topnav {
-  background-color: lightskyblue;
+  background-image: url(https://www.imf.org/-/media/Images/IMF/News/Events/2018/bank-of-spain/madrid.ashx?h=280&w=1099&la=en);
   overflow: hidden;
+  width: 65%;
+  margin-bottom: 20px;
 }
 
 /* Style the links inside the navigation bar */
@@ -15,14 +18,14 @@ h1 {
   float: left;
   color: black;
   text-align: center;
-  padding: 8px 16px;
+  padding: 33px 16px;
   text-decoration: none;
-  font-size: 17px;
+  font-size: 20px;
 }
 
 /* Change the color of links on hover */
 .topnav a:hover {
-  background-color: rgb(66, 66, 190);;
+  background-color: skyblue ;
   color: black;
 }
 
