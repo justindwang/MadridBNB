@@ -6,11 +6,13 @@ import { ReactiveFormsModule } from '@angular/forms';
 
 import { AppComponent } from './app.component';
 import { AppRoutingModule, routingComponents } from './app-routing.module';
+import { PopularityComponent } from './popularity/popularity.component';
 
 @NgModule({
   declarations: [
     AppComponent,
    routingComponents,
+   PopularityComponent,
 
 
   ],
