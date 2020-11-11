@@ -7,12 +7,14 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { AppComponent } from './app.component';
 import { AppRoutingModule, routingComponents } from './app-routing.module';
 import { PopularityComponent } from './popularity/popularity.component';
+import { RoomdistComponent } from './roomdist/roomdist.component';
 
 @NgModule({
   declarations: [
     AppComponent,
    routingComponents,
    PopularityComponent,
+   RoomdistComponent,
 
 
   ],
