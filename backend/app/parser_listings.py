@@ -16,6 +16,10 @@ class rooms:
   name = ""
   tally = 0
 
+class popular_n:
+  neighborhood = ""
+  tally = 0
+
 # parsed_data = []
 
 
@@ -40,6 +44,44 @@ def run_parser():
             globals.line_count += 1
             globals.parsed_data.append(x)
 
+def get_popular_neighborhood():
+  counter1 = 0
+  n_list = []
+
+  for i in globals.parsed_data:
+    counter2 = 0
+    flag = 0
+    if counter1 == 0:
+      x = popular_n()
+      x.neighborhood = globals.parsed_data[counter1].neigborhood
+      x.tally += globals.parsed_data[counter1].reviews
+      n_list.append(x)
+    else:
+      for j in n_list:
+        if globals.parsed_data[counter1].neighborhood == n_list[counter2].neighborhood:
+          n_list[counter2].tally += globals.parsed_data[counter1].reviews
+          flag = 1
+          break
+        else:
+          counter2 += 1
+      if flag == 0:
+        x = popular_n()
+        x.neighborhood = globals.parsed_data[counter1].neigborhood
+        x.tally += globals.parsed_data[counter1].reviews
+        n_list.append(x)
+    counter1 += 1     
+
+  popular = [None, None, None]
+  newlist = sorted(n_list, key=lambda x: int(x.tally), reverse=False)
+  y = 0
+  for i in newlist:
+    if y == 3:
+        break
+    popular[y] = newlist[len(newlist)-(y+1)]
+    y += 1
+  return popular
+
+
 def get_room_madrid():
   room_count = []
   a = rooms()
@@ -57,13 +99,13 @@ def get_room_madrid():
   counter = 0
 
   for i in globals.parsed_data:
-    if globals.parsed_data[counter].room_type = "Private room":
+    if globals.parsed_data[counter].room_type == "Private room":
       room_count[0].tally += 1
-    if globals.parsed_data[counter].room_type = "Shared room":
+    if globals.parsed_data[counter].room_type == "Shared room":
       room_count[1].tally += 1
-    if globals.parsed_data[counter].room_type = "Entire home/apt":
+    if globals.parsed_data[counter].room_type == "Entire home/apt":
       room_count[2].tally += 1
-    if globals.parsed_data[counter].room_type = "Hotel room":
+    if globals.parsed_data[counter].room_type == "Hotel room":
       room_count[3].tally += 1
     counter += 1
 
@@ -87,8 +129,8 @@ def average_price(list):
   numerator = 0
   denominator = 0
   for i in list:
-      numerator += list[x].price
-      denominator += 1
+    numerator += list[x].price
+    denominator += 1
     x += 1
   average = numerator / denominator
   return average
