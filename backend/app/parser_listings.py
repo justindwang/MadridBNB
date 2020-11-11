@@ -10,6 +10,11 @@ class listings:
   neighborhood = ""
   room_type = ""
   price = 0
+  reviews = 0
+
+class rooms:
+  name = ""
+  tally = 0
 
 # parsed_data = []
 
@@ -23,24 +28,58 @@ def run_parser():
     parser = csv.reader(csv_listings)
     for row in parser:
         if globals.line_count == 0:
-            # print('ID, Neighborhood, Room Type, Price')
             globals.line_count += 1
         else:
           if row:
             x = listings()
-            # print('ID:', row[0],'\tNeighborhood:', row[5], '\tRoom Type:', row[8], '\tPrice:', row[9])
             x.id = row[0]
             x.neighborhood = row[5]
             x.room_type = row[8]
             x.price = row[9]
-  #          print("ID:", x.id, "Neighborhood:", x.neighborhood, "Room Type:", x.room_type, "Price:", x.price)
+            x.reviews = row[11]
             globals.line_count += 1
             globals.parsed_data.append(x)
-  # count = 0
-  # for i in globals.parsed_data:
-  #   count += 1
-  #   print("ID:", globals.parsed_data[count-1].id, "Neighborhood:", globals.parsed_data[count-1].neighborhood, "Room Type:", globals.parsed_data[count-1].room_type, "Price:", globals.parsed_data[count-1].price)
-  #   print('Finished. Line count = ', count)
+
+def get_room_madrid():
+  room_count = []
+  a = rooms()
+  a.name = "Private room"
+  b = rooms()
+  b.name = "Shared room"
+  c = rooms()
+  c.name = "Entire home/apt"
+  d = rooms()
+  d.name = "Hotel room"
+  room_count.append(a)
+  room_count.append(b)
+  room_count.append(c)
+  room_count.append(d)
+  counter = 0
+
+  for i in globals.parsed_data:
+    if globals.parsed_data[counter].room_type = "Private room":
+      room_count[0].tally += 1
+    if globals.parsed_data[counter].room_type = "Shared room":
+      room_count[1].tally += 1
+    if globals.parsed_data[counter].room_type = "Entire home/apt":
+      room_count[2].tally += 1
+    if globals.parsed_data[counter].room_type = "Hotel room":
+      room_count[3].tally += 1
+    counter += 1
+
+  return room_count
+
+
+def get_popular_madrid():
+  popular = [None, None, None]
+  newlist = sorted(globals.parsed_data, key=lambda x: int(x.reviews), reverse=False)
+  y = 0
+  for i in newlist:
+    if y == 3:
+        break
+    popular[y] = newlist[len(newlist)-(y+1)]
+    y += 1
+  return popular
 
 
 def average_price(list):
@@ -48,32 +87,34 @@ def average_price(list):
   numerator = 0
   denominator = 0
   for i in list:
-    if list[x].neighborhood == n:
       numerator += list[x].price
       denominator += 1
     x += 1
   average = numerator / denominator
   return average
 
-def highest_3(list):
-  x = 0
-  price_list = []
-  high = []
-  for i in list:
-    price_list.append(list[x].price)
-    x += 1
-  high = heapq.nlargest(3,price_list)
+def get_expensive3(list):
+  high = [None, None, None]
+  newlist = sorted(list, key=lambda x: int(x.price), reverse=False)
+  y = 0
+  for i in newlist:
+    if y == 3:
+        break
+    high[y] = newlist[len(newlist)-(y+1)]
+    y += 1
   return high
 
-def lowest_3(list):
-  x = 0
-  price_list = []
-  low = []
-  for i in list:
-    price_list.append(list[x].price)
-    x += 1
-  low = heapq.nsmallest(3,price_list)
-  return low 
+def get_cheap3(list):
+  low = [None, None, None]
+  newlist = sorted(list, key=lambda x: int(x.price), reverse=False)
+  y = 0
+  for i in newlist:
+    if y == 3:
+      break
+    low[y] = newlist[y]
+    y += 1
+  return low
+
 
 def search_listings(n, r, ceiling, floor):
   x = 0
