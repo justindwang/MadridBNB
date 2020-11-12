@@ -1,0 +1,26 @@
+<h1> Most Popular </h1>
+
+<div id = "column1">
+    <h2> Most Popular Listings in Madrid</h2>
+        <div *ngFor = "let l of popular_madrid"> 
+            <div class="boxed">
+                <p> ID: {{l.id}} </p>
+                <p> {{l.neighborhood}} </p>
+                <p> {{l.roomType}} </p>
+                <p> ${{l.price}} </p>
+            </div>
+        </div>
+</div>
+
+<div id = "column2">
+    <h2> Most Popular Neighborhoods in Madrid</h2>
+        <div *ngFor = "let l of Neighborhoods_madrid"> 
+            <div class="boxed">
+                <p> ID: {{l.id}} </p>
+                <p> {{l.neighborhood}} </p>
+                <p> {{l.roomType}} </p>
+                <p> ${{l.price}} </p>
+            </div>
+        </div>
+</div>
+

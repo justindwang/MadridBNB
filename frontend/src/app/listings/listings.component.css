@@ -1,8 +1,62 @@
 
 h1 {
     color:red;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
   }
 
+
+/* Add a black background color to the top navigation */
+.topnav {
+  background-image: url(https://www.imf.org/-/media/Images/IMF/News/Events/2018/bank-of-spain/madrid.ashx?h=280&w=1099&la=en);
+  overflow: hidden;
+  width: 65%;
+  margin-bottom: 20px;
+}
+
+/* Style the links inside the navigation bar */
+.topnav a {
+  float: left;
+  color: black;
+  text-align: center;
+  padding: 33px 16px;
+  text-decoration: none;
+  font-size: 20px;
+}
+
+/* Change the color of links on hover */
+.topnav a:hover {
+  background-color: skyblue ;
+  color: black;
+}
+
+/* Add a color to the active/current link */
+.topnav a.active {
+  background-color: #4CAF50;
+  color: black;
+}
+
+ /* Navigation link styles */
+ nav a {
+  padding: 10px 10px;
+  text-decoration: none;
+  margin-top: 10px;
+  margin-left: 10px;
+  display: inline-block;
+  background-color: lightskyblue;
+  border-radius: 4px;
+  float:right;
+  margin-bottom: 50px;
+}
+nav a:visited, a:link {
+  color: black
+}
+nav a:hover {
+  color: black;
+  background-color: rgb(66, 66, 190);
+}
+nav a.active {
+  color: black;
+}
 
 /* Style the search box inside the navigation bar */
 .search input[type=text] {
@@ -135,26 +189,6 @@ h1 {
   }
 }
 
- /* Navigation link styles */
- nav a {
-  padding: 10px 10px;
-  text-decoration: none;
-  margin-top: 10px;
-  margin-left: 10px;
-  display: inline-block;
-  background-color: lightskyblue;
-  border-radius: 4px;
-}
-nav a:visited, a:link {
-  color: black
-}
-nav a:hover {
-  color: black;
-  background-color: rgb(66, 66, 190);
-}
-nav a.active {
-  color: black;
-}
 
 .boxed {
   border: 1px solid green ;

@@ -1,0 +1,31 @@
+h1{
+
+    color: darkblue;
+
+}
+
+  
+  div {
+    float: left;
+    height: 470px;
+    width: 45%;
+    padding: 0 10px;
+  }
+  
+  #column1 {
+    background-color: #a1edcc;
+    margin-right: 15px;
+   
+ 
+  }
+  
+  #column2 {
+    background-color: #a0e9ed;
+    
+  }
+  
+  
+  h2 {
+    color: #000000;
+    text-align: center;
+  }

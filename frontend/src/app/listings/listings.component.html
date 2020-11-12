@@ -1,6 +1,20 @@
 <h1>MadridBNB</h1>
 <h3>Welcome!</h3> 
 
+<div class="topnav">
+    <a routerLink="/popularity" routerLinkActive= "active"><b> Popularity </b> </a>
+    <a routerLink="/roomdist" routerLinkActive= "active"> <b> Room Distribution </b> </a>
+
+  </div>
+
+  <nav>
+    <a routerLink="/addlisting" routerLinkActive= "active">Add Listing+ </a>
+    <a routerLink="/editlisting" routerLinkActive= "active">Edit Listing </a>
+    <a routerLink="/deletelisting" routerLinkActive= "active">Delete Listing </a>
+    
+</nav>
+
+
 <!-- Search For Neighborhood bar-->
 <div class = "search">
     <input type="text" placeholder="Search Neighborhood.." #searchbar
@@ -30,13 +44,6 @@
 </div>
 
 <button class = "roomtypebtn" type = "submit" (click)="makeSearch(searchForm)"> Search </button>
-
-<nav>
-    <a routerLink="/addlisting" routerLinkActive= "active">Add Listing+ </a>
-    <a routerLink="/editlisting" routerLinkActive= "active">Edit Listing </a>
-    <a routerLink="/deletelisting" routerLinkActive= "active">Delete Listing </a>
-    
-</nav>
 
 
 
