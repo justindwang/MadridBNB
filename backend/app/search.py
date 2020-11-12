@@ -1,6 +1,6 @@
 from flask import request, jsonify, make_response
 from flask_restful import Resource
-from .parser_listings import listings, search_listings, add_listing, edit_listing, remove_listing, get_average, get_cheap3, get_expensive3
+from .parser_listings import listings, search_listings, add_listing, edit_listing, remove_listing, get_average, get_cheap3, get_expensive3, get_popular_madrid, get_room_madrid, get_popular_neighborhood, get_room_pop_neighborhoods
 
 class Listings(Resource):
     def post(self):
@@ -92,6 +92,67 @@ class EditListing(Resource):
             return res
         else:
             return "No JSON received", 400
+
+class Analytics(Resource):
+    def post(self):
+        # if request.is_json:
+        #     req = request.get_json()
+        pop_listings = get_popular_madrid()
+        madrid_dist = get_room_madrid()
+        pop_neighborhoods = get_popular_neighborhood()
+        neighborhood_room_dist = get_room_pop_neighborhoods(pop_neighborhoods)
+        # 1 dictionary with 3 keys to 3 lists of room dist objects
+        # expected add listing function that adds listing to csv file given passed neighborhood, roomType, and price parameters
+        response = {
+            "top_neighborhoods": [],
+            "top_listings": [],
+            "room_dist_data": []
+        }
+        for x in pop_listings:
+            temp = {
+                "id": x.id,
+                "neighborhood": x.neighborhood,
+                "roomType": x.room_type,
+                "price": x.price,
+                "reviews": x.reviews
+                # Accessors for each variable stored in a Listing Object
+            }
+            response['top_listings'].append(temp)
+
+        for y in pop_neighborhoods:
+            temp2 = {
+                "neighborhood": y.neighborhood,
+                "reviews": y.reviews,
+                # Accessors for each variable stored in a Rooms Object
+            }
+            response['top_neighborhoods'].append(temp2)
+
+        # response['room_dist_data'].append({"Madrid": []})
+        temp3 = {
+                "neighborhood": madrid_dist.neighborhood,
+                "shared_count": madrid_dist.shared_count,
+                "private_count": madrid_dist.private_count,
+                "entire_count": madrid_dist.entire_count,
+                "hotel_count": madrid_dist.hotel_count
+                # Accessors for each variable stored in a room_dist Object
+            }
+        response['room_dist_data'].append(temp3)
+        for z in neighborhood_room_dist:
+            temp4 = {
+                "neighborhood": z.neighborhood,
+                "shared_count": z.shared_count,
+                "private_count": z.private_count,
+                "entire_count": z.entire_count,
+                "hotel_count": z.hotel_count
+                # Accessors for each variable stored in a Listing Object
+            }
+            response['room_dist_data'].append(temp4)
+        
+        res = make_response(jsonify(response), 200)
+        res.headers.add('Access-Control-Allow-Origin', '*')
+        return res
+        # else:
+        #     return "No JSON received", 400
 
 class Reviews(Resource):
     def post(self):
