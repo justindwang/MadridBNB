@@ -51,4 +51,13 @@ export class ApiCallService {
     return this.http.post<any>('http://127.0.0.1:5000/neighborhoods', searchData);
   }
 
+  getAnalytics(){
+    //returns neighborhood data based on inputted searchData
+   /*searchData = {
+     "neighborhoodName" : "Name",
+     "neighboorhoodGroup" : "Name"
+   */
+   return this.http.get<any>('http://127.0.0.1:5000/analytics');
+ }
+
 }
