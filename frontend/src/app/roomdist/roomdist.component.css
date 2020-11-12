@@ -8,7 +8,6 @@ h1{
   
   div {
     float: left;
-    height: 470px;
     padding: 0 10px;
     margin-bottom: 25px;
     text-align: center;
@@ -17,8 +16,6 @@ h1{
   #column1 {
     background-color: #a1edcc;
     width: 50%;
-
-
    
  
   }
@@ -27,6 +24,10 @@ h1{
     background-color: #a0e9ed;
     width: 50%;
     
+  }
+
+   .boxed {
+    border: 1px solid green ;
   }
   
   

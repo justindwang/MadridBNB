@@ -94,7 +94,7 @@ class EditListing(Resource):
             return "No JSON received", 400
 
 class Analytics(Resource):
-    def post(self):
+    def get(self):
         # if request.is_json:
         #     req = request.get_json()
         pop_listings = get_popular_madrid()

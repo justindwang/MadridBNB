@@ -8,7 +8,6 @@ h1{
   div {
     float: left;
     height: 470px;
-    width: 45%;
     padding: 0 10px;
   }
   
@@ -24,6 +23,9 @@ h1{
     
   }
   
+  .boxed {
+    border: 1px solid green ;
+  }
   
   h2 {
     color: #000000;

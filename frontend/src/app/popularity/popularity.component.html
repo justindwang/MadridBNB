@@ -17,11 +17,8 @@
     <h2> Most Popular Neighborhoods in Madrid</h2>
         <div *ngFor = "let l of popular_neighborhoods"> 
             <div class="boxed">
-                <p> ID: {{l.id}} </p>
                 <p> {{l.neighborhood}} </p>
-                <p> {{l.roomType}} </p>
-                <p> ${{l.price}} </p>
-                <p> Number of Reviews: {{l.reviews}} </p>
+                <p> Total Number of Reviews: {{l.reviews}} </p>
             </div>
         </div>
 </div>

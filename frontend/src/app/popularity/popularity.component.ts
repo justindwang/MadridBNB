@@ -18,6 +18,7 @@ export class PopularityComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.makeEnter();
   }
 
   
