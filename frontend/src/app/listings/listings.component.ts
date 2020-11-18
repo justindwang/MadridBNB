@@ -15,6 +15,7 @@ export class ListingsComponent implements OnInit {
   average_price;
   cheap_listings;
   expensive_listings;
+  showMe:boolean = false;
 
   cheap = false;
   expensive = true;
@@ -77,6 +78,8 @@ export class ListingsComponent implements OnInit {
   makeSearch(searchData){
     console.log("Sending request");
     console.log(searchData);
+
+    this.showMe =!this.showMe;
 
     let response = undefined; //this should be a list of listings objects
     this.API.getListings(searchData) //make the API call
