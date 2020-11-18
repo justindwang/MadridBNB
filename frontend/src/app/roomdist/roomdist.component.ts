@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { count } from 'console';
 import { ApiCallService } from '../api-call.service';
 
 @Component({
