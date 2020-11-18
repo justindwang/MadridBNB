@@ -46,6 +46,38 @@
 <button class = "roomtypebtn" type = "submit" (click)="makeSearch(searchForm)"> Search </button>
 
 
+<div *ngIf = "ShowMe">
+    <div class = "column" > 
+        <div class = "pricedisplay">
+            <p><b> Average price of this search result:</b> <br> {{ average_price }} $ <p>
+            <!--<button onclick="toggle_display('expensive')" >Most Expensive</button>
+            <button onclick="toggle_display('cheap')" >Most Cheap</button> -->
+
+            <div>
+                <p>Expensive Listings:</p>
+                <div *ngFor = "let l of expensive_listings"> 
+                    <div class="boxed">
+                        <p> ID: {{l.id}} </p>
+                        <p> {{l.neighborhood}} </p>
+                        <p> {{l.roomType}} </p>
+                        <p> ${{l.price}} </p>
+                    </div>
+                </div>
+                <p>Cheap Listings:</p>
+                <div *ngFor = "let l of cheap_listings"> 
+                    <div class="boxed">
+                        <p> ID: {{l.id}} </p>
+                        <p> {{l.neighborhood}} </p>
+                        <p> {{l.roomType}} </p>
+                        <p> ${{l.price}} </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+   
+
 
 <!-- <div style="width:500px;height:2000px; margin-top: 25px; margin-left: 10px; border:9px solid #000;"> -->
 <!-- LISTINGS -->
@@ -61,11 +93,15 @@
         </div>
     </div>
 </div>
-<div class = "column">
+
+
+    <!-- 
+
+        <div class = "column" > 
     <div class = "pricedisplay">
         <p><b> Average price of this search result:</b> <br> {{ average_price }} $ <p>
-        <!--<button onclick="toggle_display('expensive')" >Most Expensive</button>
-        <button onclick="toggle_display('cheap')" >Most Cheap</button> -->
+        ------ <button onclick="toggle_display('expensive')" >Most Expensive</button>
+        <button onclick="toggle_display('cheap')" >Most Cheap</button> ---------
 
         <div>
             <p>Expensive Listings:</p>
@@ -88,7 +124,8 @@
             </div>
         </div>
     </div>
-</div>
+</div> 
+    --> 
 
 
 
