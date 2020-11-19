@@ -1,14 +1,15 @@
-import { Component, OnInit } from '@angular/core';
-import { count } from 'console';
+import { Component, OnInit} from '@angular/core';
 import { ApiCallService } from '../api-call.service';
+
+import Chart from 'chart.js';
 
 @Component({
   selector: 'app-roomdist',
   templateUrl: './roomdist.component.html',
   styleUrls: ['./roomdist.component.css']
 })
-export class RoomdistComponent implements OnInit {
-  room_dist_data; 
+export class RoomdistComponent implements OnInit{
+  room_dist_data = undefined; 
 
   constructor(private API : ApiCallService, ) {
 
@@ -17,6 +18,47 @@ export class RoomdistComponent implements OnInit {
   ngOnInit() {
     this.makeEnter();
     
+  }
+
+  displayCharts(){
+    if (this.room_dist_data != undefined){ //check if room_dist_data is undefined
+      for (let i = 0; i < this.room_dist_data.length; i++) {
+        let r = this.room_dist_data[i];
+        let canvas = document.getElementById('chart_' + i.toString() );
+        //console.log(canvas);
+        if (canvas != undefined) {
+          r.chart = new Chart( canvas,
+            {
+              type: 'pie',
+              data: {
+                datasets: [
+                  {
+                    data: [r.entire_count, r.hotel_count, r.private_count, r.shared_count],
+                    backgroundColor: [
+                      'rgba(255,255,255,1)',
+                      'rgba(255,0,0,1)',
+                      'rgba(0,255,0,1)',
+                      'rgba(0,0,255,1)',
+                    ],
+                    borderWidth: 0
+                  }
+                ],
+                labels : ['Entire Home / Appartment', 'Hotel', 'Private Room', 'Shared Room'],
+              },
+            }
+          );
+        } else {
+          console.log('canvas undefined');
+        }
+        
+
+        r.total = r.entire_count + r.hotel_count + r.private_count + r.shared_count;
+        r.e_p = Math.trunc(r.entire_count / r.total * 100);
+        r.h_p = Math.trunc(r.hotel_count / r.total * 100);
+        r.p_p = Math.trunc(r.private_count / r.total * 100);
+        r.s_p = Math.trunc(r.shared_count / r.total * 100);
+      }
+    } 
   }
 
   
@@ -37,14 +79,8 @@ export class RoomdistComponent implements OnInit {
             console.log(response);
             this.room_dist_data = response.room_dist_data;
 
-            for (let r of this.room_dist_data) {
-              r.total = r.entire_count + r.hotel_count + r.private_count + r.shared_count;
-              r.e_p = Math.trunc(r.entire_count / r.total * 100);
-              r.h_p = Math.trunc(r.hotel_count / r.total * 100);
-              r.p_p = Math.trunc(r.private_count / r.total * 100);
-              r.s_p = Math.trunc(r.shared_count / r.total * 100);
-            }
-
+            this.displayCharts();
+            
             console.log("Valid Reponse");
             //console.log(response);
           } else { //invalid response
