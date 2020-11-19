@@ -1,18 +1,29 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+
 <h1>MadridBNB</h1>
 <h3>Welcome!</h3> 
 
 <div class="topnav">
     <a routerLink="/popularity" routerLinkActive= "active"><b> Popularity </b> </a>
     <a routerLink="/roomdist" routerLinkActive= "active"> <b> Room Distribution </b> </a>
-
+    <a routerLink="/avgprice" routerLinkActive= "active"> <b> Average Price </b> </a>
+    <a routerLink="/addlisting" routerLinkActive= "active"> <b> Add Listing+ </b> </a>
+    <a routerLink="/editlisting" routerLinkActive= "active"> <b> Edit Listing </b>  </a>
+    <a routerLink="/deletelisting" routerLinkActive= "active"> <b> Delete Listing  </b> </a>
+    
   </div>
 
-  <nav>
+ <!--
+<nav>
     <a routerLink="/addlisting" routerLinkActive= "active">Add Listing+ </a>
     <a routerLink="/editlisting" routerLinkActive= "active">Edit Listing </a>
     <a routerLink="/deletelisting" routerLinkActive= "active">Delete Listing </a>
     
 </nav>
+  --> 
 
 
 <!-- Search For Neighborhood bar-->
@@ -46,39 +57,6 @@
 <button class = "roomtypebtn" type = "submit" (click)="makeSearch(searchForm)"> Search </button>
 
 
-<div *ngIf = "ShowMe">
-    <div class = "column" > 
-        <div class = "pricedisplay">
-            <p><b> Average price of this search result:</b> <br> {{ average_price }} $ <p>
-            <!--<button onclick="toggle_display('expensive')" >Most Expensive</button>
-            <button onclick="toggle_display('cheap')" >Most Cheap</button> -->
-
-            <div>
-                <p>Expensive Listings:</p>
-                <div *ngFor = "let l of expensive_listings"> 
-                    <div class="boxed">
-                        <p> ID: {{l.id}} </p>
-                        <p> {{l.neighborhood}} </p>
-                        <p> {{l.roomType}} </p>
-                        <p> ${{l.price}} </p>
-                    </div>
-                </div>
-                <p>Cheap Listings:</p>
-                <div *ngFor = "let l of cheap_listings"> 
-                    <div class="boxed">
-                        <p> ID: {{l.id}} </p>
-                        <p> {{l.neighborhood}} </p>
-                        <p> {{l.roomType}} </p>
-                        <p> ${{l.price}} </p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-   
-
-
 <!-- <div style="width:500px;height:2000px; margin-top: 25px; margin-left: 10px; border:9px solid #000;"> -->
 <!-- LISTINGS -->
 <div class = "column">
@@ -95,39 +73,54 @@
 </div>
 
 
-    <!-- 
+<!-- <div *ngIf = "ShowMe"> -->
+    <div class = "column" > 
+       
+            <h3> Average price of this search result: </h3>
+            <div class="avgbox">
+                <h2> {{ average_price }} $56  </h2>
+            </div> 
 
-        <div class = "column" > 
-    <div class = "pricedisplay">
-        <p><b> Average price of this search result:</b> <br> {{ average_price }} $ <p>
-        ------ <button onclick="toggle_display('expensive')" >Most Expensive</button>
-        <button onclick="toggle_display('cheap')" >Most Cheap</button> ---------
 
-        <div>
-            <p>Expensive Listings:</p>
-            <div *ngFor = "let l of expensive_listings"> 
-                <div class="boxed">
-                    <p> ID: {{l.id}} </p>
-                    <p> {{l.neighborhood}} </p>
-                    <p> {{l.roomType}} </p>
-                    <p> ${{l.price}} </p>
+            <!--<button onclick="toggle_display('expensive')" >Most Expensive</button>
+            <button onclick="toggle_display('cheap')" >Most Cheap</button> -->
+
+            <button class = "pricebutton" type = "submit" (click)="expensive_display()"> Expensive Listings </button>
+            <button class = "pricebutton" type = "submit" (click)="cheap_display()"> Cheap Listings </button>
+            <div *ngIf = "expensive">
+                <div *ngFor = "let l of expensive_listings"> 
+                    <div class="boxed">
+                        <p> ID: {{l.id}} </p>
+                        <p> {{l.neighborhood}} </p>
+                        <p> {{l.roomType}} </p>
+                        <p> ${{l.price}} </p>
+                    </div>
                 </div>
-            </div>
-            <p>Cheap Listings:</p>
-            <div *ngFor = "let l of cheap_listings"> 
-                <div class="boxed">
-                    <p> ID: {{l.id}} </p>
-                    <p> {{l.neighborhood}} </p>
-                    <p> {{l.roomType}} </p>
-                    <p> ${{l.price}} </p>
+             </div>
+    
+                <div *ngIf = "cheap">
+                    <div *ngFor = "let l of cheap_listings"> 
+                        <div class="boxed">
+                            <p> ID: {{l.id}} </p>
+                            <p> {{l.neighborhood}} </p>
+                            <p> {{l.roomType}} </p>
+                            <p> ${{l.price}} </p>
+                        </div>
+                    </div>
                 </div>
-            </div>
-        </div>
-    </div>
-</div> 
-    --> 
+                </div>
+           
+    
+<!-- </div> -->
 
 
 
+
+
+
+
+</body>
+</html>
 
 <router-outlet></router-outlet>
+

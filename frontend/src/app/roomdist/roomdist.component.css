@@ -27,7 +27,8 @@ h1{
   }
 
    .boxed {
-    border: 1px solid green ;
+    border: 3px solid black ;
+    margin-right: 3px;
   }
   
   

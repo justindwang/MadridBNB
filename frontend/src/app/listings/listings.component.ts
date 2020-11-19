@@ -15,10 +15,11 @@ export class ListingsComponent implements OnInit {
   average_price;
   cheap_listings;
   expensive_listings;
-  ShowMe:boolean = false;
+  expensive:boolean = false;
+  cheap:boolean = false;
 
-  cheap = false;
-  expensive = true;
+  //cheap = false;
+  //expensive = true;
 
   constructor(
     private API : ApiCallService, //service that calls our API
@@ -61,14 +62,12 @@ export class ListingsComponent implements OnInit {
     //console.log('SET CEIL PRICE:' + ceilprice);
   }
 
-  toggle_display(string){
-    if (string == 'cheap'){
-      this.cheap = true;
-      this.expensive = false;
-    } else if (string == 'expensive'){
-      this.expensive = true;
-      this.cheap = false;
-    }
+  expensive_display(){
+    this.expensive= true;
+  }
+
+  cheap_display(){
+    this.cheap = true;
   }
 
   
