@@ -21,3 +21,17 @@ def initialize():
     pop_listings = []
     global pop_neighborhoods
     pop_neighborhoods = []
+
+    global changed
+    changed = False
+    global pop_listing_changed
+    pop_listing_changed = False
+
+    # global delta_private
+    # delta_private = 0
+    # global delta_shared
+    # delta_shared = 0
+    # global delta_entire
+    # delta_entire = 0
+    # global delta_hotel
+    # delta_hotel = 0
