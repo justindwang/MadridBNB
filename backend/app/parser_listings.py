@@ -122,8 +122,8 @@ def get_room_madrid():
     return globals.madrid_dist
 
 def get_room_pop_neighborhoods(pop_neighborhoods):
-  if not globals.pop_neighborhood_init: 
-    globals.pop_neighborhood_init = True
+  if not globals.dist_init:
+    globals.dist_init = True
     x = 0
     list_room_dists = []
     for i in pop_neighborhoods:
