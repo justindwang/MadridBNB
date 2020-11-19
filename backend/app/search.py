@@ -1,4 +1,5 @@
 from flask import request, jsonify, make_response
+from time import perf_counter
 from flask_restful import Resource
 from .parser_listings import listings, search_listings, add_listing, edit_listing, remove_listing, get_average, get_cheap3, get_expensive3, get_popular_madrid, get_room_madrid, get_popular_neighborhood, get_room_pop_neighborhoods
 
@@ -97,10 +98,12 @@ class Analytics(Resource):
     def get(self):
         # if request.is_json:
         #     req = request.get_json()
+        start = perf_counter()
         pop_listings = get_popular_madrid()
         madrid_dist = get_room_madrid()
         pop_neighborhoods = get_popular_neighborhood()
         neighborhood_room_dist = get_room_pop_neighborhoods(pop_neighborhoods)
+        
         # 1 dictionary with 3 keys to 3 lists of room dist objects
         # expected add listing function that adds listing to csv file given passed neighborhood, roomType, and price parameters
         response = {
@@ -150,6 +153,8 @@ class Analytics(Resource):
         
         res = make_response(jsonify(response), 200)
         res.headers.add('Access-Control-Allow-Origin', '*')
+        stop = perf_counter()
+        print("Runtime: --- %s seconds ---" % (stop - start))
         return res
         # else:
         #     return "No JSON received", 400

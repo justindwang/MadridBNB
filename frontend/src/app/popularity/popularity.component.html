@@ -1,25 +1,37 @@
 <h1> Most Popular </h1>
 
-<div id = "column1">
-    <h2> Most Popular Listings in Madrid</h2>
-        <div *ngFor = "let l of popular_madrid"> 
-            <div class="boxed">
-                <p> ID: {{l.id}} </p>
-                <p> {{l.neighborhood}} </p>
-                <p> {{l.roomType}} </p>
-                <p> ${{l.price}} </p>
-                <p> Number of Reviews: {{l.reviews}} </p>
+<button class = "popularitybutton" type = "submit" (click)="madridpop_display()"> <b>Madrid Listings</b> </button>
+<button class = "popularitybutton" type = "submit" (click)="neighborhoodpop_display()"> <b> Popular Neighborhood Listings </b> </button>
+
+<div *ngIf = madrid_pop>
+
+    <div id = "column1">
+        <h2> Most Popular Listings in Madrid</h2>
+            <div *ngFor = "let l of popular_madrid"> 
+                <div class="boxed">
+                    <p> ID: {{l.id}} </p>
+                    <p> {{l.neighborhood}} </p>
+                    <p> {{l.roomType}} </p>
+                    <p> ${{l.price}} </p>
+                    <p> Number of Reviews: {{l.reviews}} </p>
+                </div>
             </div>
-        </div>
+    </div>
+
+
 </div>
 
-<div id = "column2">
-    <h2> Most Popular Neighborhoods in Madrid</h2>
-        <div *ngFor = "let l of popular_neighborhoods"> 
-            <div class="boxed">
-                <p> {{l.neighborhood}} </p>
-                <p> Total Number of Reviews: {{l.reviews}} </p>
+<div *ngIf = neighborhood_pop> 
+
+    <div id = "column1">
+        <h2> Most Popular Neighborhoods in Madrid</h2>
+            <div *ngFor = "let l of popular_neighborhoods"> 
+                <div class="boxed">
+                    <p> {{l.neighborhood}} </p>
+                    <p> Total Number of Reviews: {{l.reviews}} </p>
+                </div>
             </div>
-        </div>
+    </div>
 </div>
+
 

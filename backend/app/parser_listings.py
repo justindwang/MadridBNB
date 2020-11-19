@@ -57,122 +57,117 @@ def run_parser():
 
 
 def get_popular_neighborhood():
-  counter1 = 0
-  n_list = []
+  if not globals.pop_neighborhood_init:
+    globals.pop_neighborhood_init = True
+    counter1 = 0
+    n_list = []
 
-  for i in globals.parsed_data:
-    counter2 = 0
-    flag = 0
-    if counter1 == 0:
-      x = popular_n()
-      x.neighborhood = globals.parsed_data[counter1].neighborhood
-      x.reviews += int(globals.parsed_data[counter1].reviews)
-      n_list.append(x)
-    else:
-      for j in n_list:
-        if globals.parsed_data[counter1].neighborhood == n_list[counter2].neighborhood:
-          n_list[counter2].reviews += int(globals.parsed_data[counter1].reviews)
-          flag = 1
-          break
-        else:
-          counter2 += 1
-      if flag == 0:
+    for i in globals.parsed_data:
+      counter2 = 0
+      flag = 0
+      if counter1 == 0:
         x = popular_n()
         x.neighborhood = globals.parsed_data[counter1].neighborhood
         x.reviews += int(globals.parsed_data[counter1].reviews)
         n_list.append(x)
-    counter1 += 1     
+      else:
+        for j in n_list:
+          if globals.parsed_data[counter1].neighborhood == n_list[counter2].neighborhood:
+            n_list[counter2].reviews += int(globals.parsed_data[counter1].reviews)
+            flag = 1
+            break
+          else:
+            counter2 += 1
+        if flag == 0:
+          x = popular_n()
+          x.neighborhood = globals.parsed_data[counter1].neighborhood
+          x.reviews += int(globals.parsed_data[counter1].reviews)
+          n_list.append(x)
+      counter1 += 1     
 
 
-  popular = [None, None, None]
-  newlist = sorted(n_list, key=lambda x: int(x.reviews), reverse=False)
-  y = 0
-  for i in newlist:
-    if y == 3:
-        break
-    popular[y] = newlist[len(newlist)-(y+1)]
-    y += 1
-  return popular
+    popular = [None, None, None]
+    newlist = sorted(n_list, key=lambda x: int(x.reviews), reverse=False)
+    y = 0
+    for i in newlist:
+      if y == 3:
+          break
+      popular[y] = newlist[len(newlist)-(y+1)]
+      y += 1
+    globals.pop_neighborhoods = popular
+    return globals.pop_neighborhoods
+  else:
+    return globals.pop_neighborhoods
 
 def get_room_madrid():
-  # room_count = []
-  # a = rooms()
-  # a.name = "Private room"
-  # b = rooms()
-  # b.name = "Shared room"
-  # c = rooms()
-  # c.name = "Entire home/apt"
-  # d = rooms()
-  # d.name = "Hotel room"
-  # room_count.append(a)
-  # room_count.append(b)
-  # room_count.append(c)
-  # room_count.append(d)
-  counter = 0
-  madrid_dist = room_distribution()
-  madrid_dist.neighborhood = "Madrid"
+  if not globals.madrid_dist_init:
+    globals.madrid_dist_init = True
+    counter = 0
+    madrid_dist = room_distribution()
+    madrid_dist.neighborhood = "Madrid"
 
-  for i in globals.parsed_data:
-    if globals.parsed_data[counter].room_type == "Private room":
-      madrid_dist.private_count += 1
-    if globals.parsed_data[counter].room_type == "Shared room":
-      madrid_dist.shared_count += 1
-    if globals.parsed_data[counter].room_type == "Entire home/apt":
-      madrid_dist.entire_count += 1
-    if globals.parsed_data[counter].room_type == "Hotel room":
-      madrid_dist.hotel_count += 1
-    counter += 1
-
-  return madrid_dist
+    for i in globals.parsed_data:
+      if globals.parsed_data[counter].room_type == "Private room":
+        madrid_dist.private_count += 1
+      if globals.parsed_data[counter].room_type == "Shared room":
+        madrid_dist.shared_count += 1
+      if globals.parsed_data[counter].room_type == "Entire home/apt":
+        madrid_dist.entire_count += 1
+      if globals.parsed_data[counter].room_type == "Hotel room":
+        madrid_dist.hotel_count += 1
+      counter += 1
+    globals.madrid_dist = madrid_dist
+    return globals.madrid_dist
+  else:
+    return globals.madrid_dist
 
 def get_room_pop_neighborhoods(pop_neighborhoods):
-  x = 0
-  list_room_dists = []
-  for i in pop_neighborhoods:
+  if not globals.dist_init:
+    globals.dist_init = True
+    x = 0
+    list_room_dists = []
+    for i in pop_neighborhoods:
+      counter = 0
 
-    # room_count = []
-    # a = rooms()
-    # a.name = "Private room"
-    # b = rooms()
-    # b.name = "Shared room"
-    # c = rooms()
-    # c.name = "Entire home/apt"
-    # d = rooms()
-    # d.name = "Hotel room"
-    # room_count.append(a)
-    # room_count.append(b)
-    # room_count.append(c)
-    # room_count.append(d)
-    counter = 0
+      room_dist = room_distribution()
+      room_dist.neighborhood = pop_neighborhoods[x].neighborhood
 
-    room_dist = room_distribution()
-    room_dist.neighborhood = pop_neighborhoods[x].neighborhood
-
-    for j in globals.parsed_data:
-      if globals.parsed_data[counter].neighborhood == room_dist.neighborhood:
-        if globals.parsed_data[counter].room_type == "Private room":
-          room_dist.private_count += 1
-        if globals.parsed_data[counter].room_type == "Shared room":
-          room_dist.shared_count += 1
-        if globals.parsed_data[counter].room_type == "Entire home/apt":
-          room_dist.entire_count += 1
-        if globals.parsed_data[counter].room_type == "Hotel room":
-          room_dist.hotel_count += 1
-      counter += 1
-    list_room_dists.append(room_dist)
-    x += 1
-  return list_room_dists
+      for j in globals.parsed_data:
+        if globals.parsed_data[counter].neighborhood == room_dist.neighborhood:
+          if globals.parsed_data[counter].room_type == "Private room":
+            room_dist.private_count += 1
+          if globals.parsed_data[counter].room_type == "Shared room":
+            room_dist.shared_count += 1
+          if globals.parsed_data[counter].room_type == "Entire home/apt":
+            room_dist.entire_count += 1
+          if globals.parsed_data[counter].room_type == "Hotel room":
+            room_dist.hotel_count += 1
+        counter += 1
+      list_room_dists.append(room_dist)
+      x += 1
+    globals.room_distributions = list_room_dists
+    return globals.room_distributions
+  else:
+    return globals.room_distributions
 
 def get_popular_madrid():
-  popular = [None, None, None]
-  newlist = sorted(globals.parsed_data, key=lambda x: int(x.reviews), reverse=False)
-  y = 0
-  for i in newlist:
-    if y == 3:
-        break
-    popular[y] = newlist[len(newlist)-(y+1)]
-    y += 1
-  return popular
+  if not globals.pop_listing_init: 
+    globals.pop_listing_init = True
+    popular = [None, None, None]
+    newlist = sorted(globals.parsed_data, key=lambda x: int(x.reviews), reverse=False)
+    y = 0
+    for i in newlist:
+      if y == 3:
+          break
+      popular[y] = newlist[len(newlist)-(y+1)]
+      y += 1
+    globals.pop_listings = popular
+    return globals.pop_listings
+  else:
+    # if globals.changed:
+      
+    # else:
+      return globals.pop_listings
 
 
 def get_average(list):

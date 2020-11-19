@@ -15,9 +15,13 @@ export class ListingsComponent implements OnInit {
   average_price;
   cheap_listings;
   expensive_listings;
+  price_display;
+  ShowMe = false;
 
-  cheap = false;
-  expensive = true;
+
+
+  //cheap = false;
+  //expensive = true;
 
   constructor(
     private API : ApiCallService, //service that calls our API
@@ -60,16 +64,21 @@ export class ListingsComponent implements OnInit {
     //console.log('SET CEIL PRICE:' + ceilprice);
   }
 
-  toggle_display(string){
-    if (string == 'cheap'){
-      this.cheap = true;
-      this.expensive = false;
-    } else if (string == 'expensive'){
-      this.expensive = true;
-      this.cheap = false;
+  expensive_display(){
+    if (this.price_display == 'expensive'){
+      this.price_display = 'none';
+    } else {
+      this.price_display = 'expensive';
     }
   }
 
+  cheap_display(){
+    if (this.price_display == 'cheap'){
+      this.price_display = 'none';
+    } else {
+      this.price_display = 'cheap';
+    }
+  }
   
 
 
@@ -77,6 +86,8 @@ export class ListingsComponent implements OnInit {
   makeSearch(searchData){
     console.log("Sending request");
     console.log(searchData);
+
+    this.ShowMe = true;
 
     let response = undefined; //this should be a list of listings objects
     this.API.getListings(searchData) //make the API call

@@ -1,30 +1,50 @@
 h1{
 
-    color: darkblue;
+    color: brown;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
 
 }
 
-  
+
+.popularitybutton{
+
+  background-color: black;
+  border: none;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin-right: 10px;
+  margin-bottom: 60px;
+
+}
+
+
+
   div {
-    float: left;
-    height: 470px;
     padding: 0 10px;
+    margin-bottom: 25px;
+    text-align: center;
   }
   
   #column1 {
-    background-color: #a1edcc;
-    margin-right: 15px;
+    background-color: burlywood;
+    /*width: 50%;*/
+    
    
  
   }
   
   #column2 {
-    background-color: #a0e9ed;
+    background-color: whitesmoke;
     
   }
   
   .boxed {
-    border: 1px solid green ;
+    border: 3px solid black ;
+    margin-right: 3px;
   }
   
   h2 {

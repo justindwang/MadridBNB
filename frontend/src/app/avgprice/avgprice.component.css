@@ -1,0 +1,17 @@
+h1{
+
+    color: brown;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    text-align: center;
+}
+
+.avgbox {
+    margin-left:35%;
+    border: 4px solid black ;
+    background-color: black;
+    width: 25%;
+    text-align: center;
+    color: white;
+    
+  
+  }

@@ -1,4 +1,4 @@
-import { Component, OnInit} from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { ApiCallService } from '../api-call.service';
 
 import Chart from 'chart.js';
@@ -10,6 +10,8 @@ import Chart from 'chart.js';
 })
 export class RoomdistComponent implements OnInit{
   room_dist_data = undefined; 
+  madrid_room: boolean = false;
+  neighborhood_room: boolean = false;
 
   constructor(private API : ApiCallService, ) {
 
@@ -60,6 +62,28 @@ export class RoomdistComponent implements OnInit{
       }
     } 
   }
+
+  madridroom_display(){
+    let room = document.getElementById('madrid_room');
+    if (room.style.display == "none"){
+      room.style.display = "block";
+    } else {
+      room.style.display = "none";
+    }
+    
+   
+  }
+
+  neighborhoodroom_display(){
+    let room = document.getElementById('neighborhood_room');
+    if (room.style.display == "none"){
+      room.style.display = "block";
+    } else {
+      room.style.display = "none";
+    }
+    
+  }
+
 
   
   //sends a get request to the server
