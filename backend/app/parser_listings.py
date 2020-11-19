@@ -119,7 +119,18 @@ def get_room_madrid():
     globals.madrid_dist = madrid_dist
     return globals.madrid_dist
   else:
-    return globals.madrid_dist
+    # if globals.changed:
+    #   globals.madrid_dist.private_count += globals.delta_private
+    #   globals.madrid_dist.shared_count += globals.delta_shared
+    #   globals.madrid_dist.entire_count += globals.delta_entire
+    #   globals.madrid_dist.hotel_count += globals.delta_hotel
+    #   globals.delta_private = 0
+    #   globals.delta_shared = 0
+    #   globals.delta_entire = 0
+    #   globals.delta_hotel = 0
+    #   return globals.madrid_dist 
+    # else:
+      return globals.madrid_dist
 
 def get_room_pop_neighborhoods(pop_neighborhoods):
   if not globals.dist_init:
@@ -151,7 +162,7 @@ def get_room_pop_neighborhoods(pop_neighborhoods):
     return globals.room_distributions
 
 def get_popular_madrid():
-  if not globals.pop_listing_init: 
+  if not globals.pop_listing_init or globals.pop_listing_changed: 
     globals.pop_listing_init = True
     popular = [None, None, None]
     newlist = sorted(globals.parsed_data, key=lambda x: int(x.reviews), reverse=False)
@@ -164,10 +175,7 @@ def get_popular_madrid():
     globals.pop_listings = popular
     return globals.pop_listings
   else:
-    # if globals.changed:
-      
-    # else:
-      return globals.pop_listings
+    return globals.pop_listings
 
 
 def get_average(list):
@@ -218,6 +226,31 @@ def search_listings(n, r, ceiling, floor):
 
 
 def add_listing(neighborhood, room_type, price):
+  globals.changed = True
+  if room_type == "Private room":
+    globals.madrid_dist.private_count += 1
+  if room_type == "Shared room":
+    globals.madrid_dist.shared_count += 1
+  if room_type == "Entire home/apt":
+    globals.madrid_dist.entire_count += 1
+  if room_type == "Hotel room":
+    globals.madrid_dist.hotel_count += 1
+
+  a=0
+  for i in globals.pop_neighborhoods:
+    if neighborhood == globals.pop_neighborhoods[a].neighborhood:
+      if room_type == "Private room":
+        globals.room_distributions[a].private_count += 1
+      if room_type == "Shared room":
+        globals.room_distributions[a].shared_count += 1
+      if room_type == "Entire home/apt":
+        globals.room_distributions[a].entire_count += 1
+      if room_type == "Hotel room":
+        globals.room_distributions[a].hotel_count += 1
+      break
+    else:
+      a+=1
+
   with codecs.open('app/id.txt', 'r', encoding="utf-8", errors='ignore') as f:
     id_counter = int(f.read())
   id_counter += 1
@@ -236,9 +269,66 @@ def add_listing(neighborhood, room_type, price):
   return x
 
 def edit_listing(id, neighborhood, room_type, price):
+  globals.changed = True
+  if room_type == "Private room":
+    globals.madrid_dist.private_count += 1
+  if room_type == "Shared room":
+    globals.madrid_dist.shared_count += 1
+  if room_type == "Entire home/apt":
+    globals.madrid_dist.entire_count += 1
+  if room_type == "Hotel room":
+    globals.madrid_dist.hotel_count += 1
+
+  a=0
+  for i in globals.pop_neighborhoods:
+    if neighborhood == globals.pop_neighborhoods[a].neighborhood:
+      if room_type == "Private room":
+        globals.room_distributions[a].private_count += 1
+      if room_type == "Shared room":
+        globals.room_distributions[a].shared_count += 1
+      if room_type == "Entire home/apt":
+        globals.room_distributions[a].entire_count += 1
+      if room_type == "Hotel room":
+        globals.room_distributions[a].hotel_count += 1
+      break
+    else:
+      a+=1
+  
   x = 0
   for i in globals.parsed_data:
     if id == int(globals.parsed_data[x].id):
+      if globals.parsed_data[x].room_type == "Private room":
+        globals.madrid_dist.private_count -= 1
+      if globals.parsed_data[x].room_type == "Shared room":
+        globals.madrid_dist.shared_count -= 1
+      if globals.parsed_data[x].room_type == "Entire home/apt":
+        globals.madrid_dist.entire_count -= 1
+      if globals.parsed_data[x].room_type == "Hotel room":
+        globals.madrid_dist.hotel_count -= 1
+
+      b=0
+      for i in globals.pop_neighborhoods:
+        if globals.parsed_data[x].neighborhood == globals.pop_neighborhoods[b].neighborhood:
+          if globals.parsed_data[x].room_type == "Private room":
+            globals.room_distributions[b].private_count -= 1
+          if globals.parsed_data[x].room_type == "Shared room":
+            globals.room_distributions[b].shared_count -= 1
+          if globals.parsed_data[x].room_type == "Entire home/apt":
+            globals.room_distributions[b].entire_count -= 1
+          if globals.parsed_data[x].room_type == "Hotel room":
+            globals.room_distributions[b].hotel_count -= 1
+          break
+        else:
+          b+=1
+
+      c=0
+      for k in globals.pop_listings:
+        if globals.parsed_data[x].id == globals.pop_listings[c].id:
+          globals.pop_listing_changed = True
+          break
+        else:
+          c+=1
+
       globals.parsed_data[x].neighborhood = neighborhood
       globals.parsed_data[x].room_type = room_type
       globals.parsed_data[x].price = price
@@ -269,9 +359,42 @@ def edit_listing(id, neighborhood, room_type, price):
     #     parser.writerow(new_listing)
 
 def remove_listing(id):
+  globals.changed = True
   x = 0
   for i in globals.parsed_data:
     if id == int(globals.parsed_data[x].id):
+      if globals.parsed_data[x].room_type == "Private room":
+        globals.madrid_dist.private_count -= 1
+      if globals.parsed_data[x].room_type == "Shared room":
+        globals.madrid_dist.shared_count -= 1
+      if globals.parsed_data[x].room_type == "Entire home/apt":
+        globals.madrid_dist.entire_count -= 1
+      if globals.parsed_data[x].room_type == "Hotel room":
+        globals.madrid_dist.hotel_count -= 1
+
+      a=0
+      for j in globals.pop_neighborhoods:
+        if globals.parsed_data[x].neighborhood == globals.pop_neighborhoods[a].neighborhood:
+          if globals.parsed_data[x].room_type == "Private room":
+            globals.room_distributions[a].private_count -= 1
+          if globals.parsed_data[x].room_type == "Shared room":
+            globals.room_distributions[a].shared_count -= 1
+          if globals.parsed_data[x].room_type == "Entire home/apt":
+            globals.room_distributions[a].entire_count -= 1
+          if globals.parsed_data[x].room_type == "Hotel room":
+            globals.room_distributions[a].hotel_count -= 1
+          break
+        else:
+          a+=1
+      
+      b=0
+      for k in globals.pop_listings:
+        if globals.parsed_data[x].id == globals.pop_listings[b].id:
+          globals.pop_listing_changed = True
+          break
+        else:
+          b+=1
+
       globals.parsed_data.pop(x)
     else:
       x += 1
@@ -289,11 +412,5 @@ def remove_listing(id):
     contents = "".join(contents)
     with codecs.open("app/listings.csv", "w", encoding="utf-8", errors='ignore') as f:
       f.write(contents)
-  # with open("app/test.csv", 'w') as csv_listings:
-  #   parser = csv.writer(csv_listings)
-  #   for row in parser:
-  #     if row[0] == id:
-  #       new_listing = ['', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '']
-  #       parser.writerow(new_listing)
 
 

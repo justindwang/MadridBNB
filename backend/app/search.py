@@ -1,6 +1,7 @@
 from flask import request, jsonify, make_response
 from time import perf_counter
 from flask_restful import Resource
+from app import globals
 from .parser_listings import listings, search_listings, add_listing, edit_listing, remove_listing, get_average, get_cheap3, get_expensive3, get_popular_madrid, get_room_madrid, get_popular_neighborhood, get_room_pop_neighborhoods
 
 class Listings(Resource):
@@ -155,6 +156,8 @@ class Analytics(Resource):
         res.headers.add('Access-Control-Allow-Origin', '*')
         stop = perf_counter()
         print("Runtime: --- %s seconds ---" % (stop - start))
+        globals.changed = False
+        globals.pop_listing_changed = False
         return res
         # else:
         #     return "No JSON received", 400
