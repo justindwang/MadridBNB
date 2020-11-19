@@ -7,6 +7,7 @@ import { EditlistingComponent } from './editlisting/editlisting.component'
 import { DeletelistingComponent } from './deletelisting/deletelisting.component'
 import { PopularityComponent } from './popularity/popularity.component'
 import { RoomdistComponent } from './roomdist/roomdist.component'
+import { AvgpriceComponent } from './avgprice/avgprice.component'
 
 const routes: Routes = [
 
@@ -15,7 +16,8 @@ const routes: Routes = [
     {path: 'editlisting', component: EditlistingComponent},
     {path: 'deletelisting', component: DeletelistingComponent},
     {path: 'popularity', component: PopularityComponent},
-    {path: 'roomdist', component: RoomdistComponent}
+    {path: 'roomdist', component: RoomdistComponent},
+    {path: 'avgprice', component: AvgpriceComponent}
 
 ];
 
@@ -25,4 +27,4 @@ const routes: Routes = [
 })
 
 export class AppRoutingModule {}
-export const routingComponents = [ListingsComponent, AddlistingComponent,EditlistingComponent,DeletelistingComponent,PopularityComponent,RoomdistComponent]
+export const routingComponents = [ListingsComponent, AddlistingComponent,EditlistingComponent,DeletelistingComponent,PopularityComponent,RoomdistComponent, AvgpriceComponent]

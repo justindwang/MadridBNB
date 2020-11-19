@@ -8,6 +8,7 @@ import { AppComponent } from './app.component';
 import { AppRoutingModule, routingComponents } from './app-routing.module';
 import { PopularityComponent } from './popularity/popularity.component';
 import { RoomdistComponent } from './roomdist/roomdist.component';
+import { AvgpriceComponent } from './avgprice/avgprice.component';
 
 @NgModule({
   declarations: [
@@ -15,6 +16,7 @@ import { RoomdistComponent } from './roomdist/roomdist.component';
    routingComponents,
    PopularityComponent,
    RoomdistComponent,
+   AvgpriceComponent,
 
 
   ],
