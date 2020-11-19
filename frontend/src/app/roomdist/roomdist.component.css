@@ -1,27 +1,44 @@
 h1{
 
-    color: darkblue;
-    font-family: arial ;
+  color: brown;
+  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+
+}
+
+.roombutton{
+
+  background-color: black;
+  border: none;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin-right: 10px;
+  margin-bottom: 60px;
+
+
 
 }
 
   
   div {
-    float: left;
     padding: 0 10px;
     margin-bottom: 25px;
     text-align: center;
   }
   
   #column1 {
-    background-color: #a1edcc;
-    width: 50%;
+    background-color: burlywood;
+    /*width: 50%;*/
+    
    
  
   }
   
   #column2 {
-    background-color: #a0e9ed;
+    background-color: whitesmoke;
     width: 50%;
     
   }
@@ -36,3 +53,4 @@ h1{
     color: #000000;
     text-align: center;
   }
+  

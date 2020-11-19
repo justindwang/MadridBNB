@@ -1,6 +1,7 @@
 h1{
 
-    color: darkblue;
+    color: brown;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
 
 }
 
@@ -9,17 +10,18 @@ h1{
     float: left;
     height: 470px;
     padding: 0 10px;
+    margin: auto;
   }
   
   #column1 {
-    background-color: #a1edcc;
+    background-color: burlywood;
     margin-right: 15px;
    
  
   }
   
   #column2 {
-    background-color: #a0e9ed;
+    background-color: whitesmoke;
     
   }
   

@@ -1,7 +1,14 @@
 <h1> Distribution of Room Type </h1>
 
-<div id = "column1">
-    <h2> Madrid</h2>
+
+<button class = "roombutton" type = "submit" (click)="madridroom_display()"> <b>Madrid Listings</b> </button>
+<button class = "roombutton" type = "submit" (click)="neighborhoodroom_display()"> <b> Popular Neighborhood Listings </b> </button>
+
+
+    <div *ngIf = "madrid_room"> 
+    <div id = "column1"> 
+
+        <h2> Madrid</h2>
         <div *ngFor = "let n of room_dist_data"> 
             <div *ngIf = "n.neighborhood == 'Madrid'" class = "boxed">
                 <p>Entire Home/ Appartment: {{n.entire_count}} <br> ({{n.e_p}}%)</p>
@@ -9,22 +16,33 @@
                 <p>Private Room: {{n.private_count}} <br> ({{n.p_p}}%)</p>
                 <p>Shared Room: {{n.shared_count}} <br> ({{n.s_p}}%)</p>
             </div>
+          </div>
+
         </div>
-</div>
+
+    </div>
+       
+    
 
 
+    <div *ngIf = "neighborhood_room"> 
+        <div id = "column1"> 
 
-
-<div id = "column2">
-    <h2> Most Popular Neighborhoods</h2>
-<div *ngFor = "let n of room_dist_data">
-    <div *ngIf = "n.neighborhood != 'Madrid'" class = "boxed">
-        <!--<p><b>insert pie charts</b></p> !-->
-            <p>Neighborhood: {{n.neighborhood}}</p>
-            <p>Entire Home/ Appartment: {{n.entire_count}} <br> ({{n.e_p}}%)</p>
-            <p>Hotels: {{n.hotel_count}} <br> ({{n.h_p}}%)</p>
-            <p>Private Room: {{n.private_count}} <br> ({{n.p_p}}%)</p>
-            <p>Shared Room: {{n.shared_count}} <br> ({{n.s_p}}%)</p>
+            <h2> Most Popular Neighborhoods</h2>
+            testing neighborhhod
+            <div *ngFor = "let n of room_dist_data">
+                <div *ngIf = "n.neighborhood != 'Madrid'" class = "boxed">
+                    <!--<p><b>insert pie charts</b></p> !-->
+                        <p>Neighborhood: {{n.neighborhood}}</p>
+                        <p>Entire Home/ Appartment: {{n.entire_count}} <br> ({{n.e_p}}%)</p>
+                        <p>Hotels: {{n.hotel_count}} <br> ({{n.h_p}}%)</p>
+                        <p>Private Room: {{n.private_count}} <br> ({{n.p_p}}%)</p>
+                        <p>Shared Room: {{n.shared_count}} <br> ({{n.s_p}}%)</p>
+                    </div>
+            </div>
         </div>
-</div>
-</div>
+    
+        
+        </div>
+       
+

@@ -2,6 +2,7 @@
 h1 {
     color: brown;
     font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    text-align: center;
   }
 
   h3{
@@ -14,8 +15,8 @@ h1 {
 .topnav {
   background-image: url(https://www.imf.org/-/media/Images/IMF/News/Events/2018/bank-of-spain/madrid.ashx?h=280&w=1099&la=en);
   overflow: hidden;
-  width: 65%;
   margin-bottom: 20px;
+  /*width: 65%;*/
 }
 
 /* Style the links inside the navigation bar */
@@ -210,9 +211,11 @@ nav a.active {
 
 
 .avgbox {
+
   border: 4px solid black ;
-  width: 25%;
+  background-color: brown;
   text-align: center;
+  color: white;
 
 }
   

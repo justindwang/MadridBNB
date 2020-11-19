@@ -18,6 +18,8 @@ export class ListingsComponent implements OnInit {
   expensive:boolean = false;
   cheap:boolean = false;
 
+
+
   //cheap = false;
   //expensive = true;
 
@@ -63,13 +65,12 @@ export class ListingsComponent implements OnInit {
   }
 
   expensive_display(){
-    this.expensive= true;
+    this.expensive= !this.expensive;
   }
 
   cheap_display(){
-    this.cheap = true;
+    this.cheap = !this.cheap;
   }
-
   
 
 

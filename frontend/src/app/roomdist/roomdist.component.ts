@@ -7,7 +7,9 @@ import { ApiCallService } from '../api-call.service';
   styleUrls: ['./roomdist.component.css']
 })
 export class RoomdistComponent implements OnInit {
-  room_dist_data; 
+  room_dist_data;
+  madrid_room:boolean = false;
+  neighborhood_room:boolean = false;
 
   constructor(private API : ApiCallService, ) {
 
@@ -17,6 +19,16 @@ export class RoomdistComponent implements OnInit {
     this.makeEnter();
     
   }
+
+  madridroom_display(){
+    this.madrid_room= !this.madrid_room;
+   
+  }
+
+  neighborhoodroom_display(){
+    this.neighborhood_room = !this.neighborhood_room;
+  }
+
 
   
   //sends a get request to the server

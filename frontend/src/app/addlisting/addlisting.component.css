@@ -1,12 +1,13 @@
 h1{
 
-    color: navy;
+    color: brown;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+
 }
-  
   
   /* ROOMTYPE BUTTON */
   .roomtypebtn {
-    background-color:navy;
+    background-color: black;
     color: white;
     margin-top: 20;
     padding: 100;
