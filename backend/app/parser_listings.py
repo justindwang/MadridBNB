@@ -189,6 +189,20 @@ def get_average(list):
   average = numerator / denominator
   return round(average, 2)
 
+def get_global_average():
+  if not globals.avg_init:
+    globals.avg_init = True
+    x=0
+    for i in globals.parsed_data:
+      globals.total_price += int(globals.parsed_data[x].price)
+      globals.num_listings += 1
+      x+=1
+    average = globals.total_price / globals.num_listings
+    return round(average, 2)
+  else:
+    average = globals.total_price / globals.num_listings
+    return round(average, 2)
+
 def get_expensive3(list):
   high = [None, None, None]
   newlist = sorted(list, key=lambda x: int(x.price), reverse=False)
@@ -235,6 +249,9 @@ def add_listing(neighborhood, room_type, price):
     globals.madrid_dist.entire_count += 1
   if room_type == "Hotel room":
     globals.madrid_dist.hotel_count += 1
+
+  globals.total_price += price
+  globals.num_listings +=1
 
   a=0
   for i in globals.pop_neighborhoods:
@@ -321,6 +338,9 @@ def edit_listing(id, neighborhood, room_type, price):
         else:
           b+=1
 
+      globals.total_price -= int(globals.parsed_data[x].price)
+      globals.total_price += price
+  
       c=0
       for k in globals.pop_listings:
         if globals.parsed_data[x].id == globals.pop_listings[c].id:
@@ -386,6 +406,9 @@ def remove_listing(id):
           break
         else:
           a+=1
+
+      globals.total_price -= int(globals.parsed_data[x].price)
+      globals.num_listings -=1
       
       b=0
       for k in globals.pop_listings:

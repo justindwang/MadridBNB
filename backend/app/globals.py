@@ -3,7 +3,14 @@ def initialize():
     parsed_data = []
     global line_count
     line_count = 0
+    global total_price
+    total_price = 0
+    global num_listings
+    num_listings = 0
 
+
+    global avg_init
+    avg_init = False
     global pop_listing_init
     pop_listing_init = False
     global pop_neighborhood_init

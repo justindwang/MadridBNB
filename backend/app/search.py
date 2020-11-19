@@ -2,7 +2,7 @@ from flask import request, jsonify, make_response
 from time import perf_counter
 from flask_restful import Resource
 from app import globals
-from .parser_listings import listings, search_listings, add_listing, edit_listing, remove_listing, get_average, get_cheap3, get_expensive3, get_popular_madrid, get_room_madrid, get_popular_neighborhood, get_room_pop_neighborhoods
+from .parser_listings import listings, search_listings, add_listing, edit_listing, remove_listing, get_average, get_cheap3, get_expensive3, get_popular_madrid, get_room_madrid, get_popular_neighborhood, get_room_pop_neighborhoods, get_global_average
 
 class Listings(Resource):
     def post(self):
@@ -110,8 +110,11 @@ class Analytics(Resource):
         response = {
             "top_neighborhoods": [],
             "top_listings": [],
-            "room_dist_data": []
+            "room_dist_data": [],
+            "global_average": 0
         }
+        response['global_average'] = get_global_average()
+        
         for x in pop_listings:
             temp = {
                 "id": x.id,
