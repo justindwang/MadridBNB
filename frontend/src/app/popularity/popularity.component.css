@@ -5,17 +5,34 @@ h1{
 
 }
 
-  
+
+.popularitybutton{
+
+  background-color: black;
+  border: none;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin-right: 10px;
+  margin-bottom: 60px;
+
+}
+
+
+
   div {
-    float: left;
-    height: 470px;
     padding: 0 10px;
-    margin: auto;
+    margin-bottom: 25px;
+    text-align: center;
   }
   
   #column1 {
     background-color: burlywood;
-    margin-right: 15px;
+    /*width: 50%;*/
+    
    
  
   }

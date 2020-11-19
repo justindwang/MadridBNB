@@ -10,6 +10,9 @@ import { ApiCallService } from '../api-call.service';
 export class PopularityComponent implements OnInit {
   popular_madrid;
   popular_neighborhoods;
+  neighborhood_pop:boolean = true;
+  madrid_pop:boolean = true;
+
   constructor(
     private API : ApiCallService, //service that calls our API
   )
@@ -20,6 +23,16 @@ export class PopularityComponent implements OnInit {
   ngOnInit() {
     this.makeEnter();
   }
+
+  madridpop_display(){
+    this.madrid_pop= !this.madrid_pop;
+   
+  }
+
+  neighborhoodpop_display(){
+    this.neighborhood_pop = !this.neighborhood_pop;
+  }
+
 
   
   //sends a get request to the server
