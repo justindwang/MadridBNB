@@ -1,9 +1,0 @@
-id,name,host_id,host_name,neighbourhood_group,neighbourhood,latitude,longitude,room_type,price,minimum_nights,number_of_reviews,last_review,reviews_per_month,calculated_host_listings_count,availability_365
-6369,"Rooftop terrace room with ensuite bathroom, Airc.",13660,Simon,Chamartín,Hispanoamérica,40.45628,-3.67763,Private room,70,1,65,9/4/2019,0.56,1,53
-21853,Bright and airy room,83531,Abdel,Latina,Cármenes,40.40341,-3.74084,Private room,17,4,33,7/15/2018,0.55,2,48
-24805,Gran Via Studio Madrid,101471,Iraido,Centro,Universidad,40.42202,-3.70395,Entire home/apt,80,5,2,7/3/2017,0.03,1,354
-24836,"Select the Madrid more ""cool"".",101653,Tenty,Centro,Justicia,40.41995,-3.69764,Entire home/apt,115,3,64,7/7/2019,0.63,1,301
-3,1,2,3,4,test_neighborhood2,6,7,test_roomType2,101,10,11,12,13,14,15
-5,1,2,3,4,test1,6,7,Entire home/apt,12,10,11,12,13,14,15
-20835,1,2,3,4,test_neighborhood1,6,7,Entire home/apt,140,10,11,12,13,14,15
-20835,1,2,3,4,hi,6,7,Entire home/apt,140,10,11,12,13,14,15
