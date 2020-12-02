@@ -186,6 +186,8 @@ def get_average(list):
     numerator += int(list[x].price)
     denominator += 1
     x += 1
+  if denominator == 0:
+    return 0
   average = numerator / denominator
   return round(average, 2)
 
@@ -436,4 +438,33 @@ def remove_listing(id):
     with codecs.open("app/listings.csv", "w", encoding="utf-8", errors='ignore') as f:
       f.write(contents)
 
-
+def add_review(id):
+  globals.pop_listing_changed = True
+  x = 0
+  new_count = 0
+  for i in globals.parsed_data:
+    if id == int(globals.parsed_data[x].id):
+      new_count = int(globals.parsed_data[x].reviews) + 1
+      globals.parsed_data[x].reviews = new_count
+      break
+    else:
+      x += 1
+  index_to_edit = 0
+  with codecs.open("app/listings.csv", 'r', encoding="utf-8", errors='ignore') as csv_listings:
+    parser = csv.reader(csv_listings)
+    for row in parser:
+      if row[0] and row[0].isdigit():
+        if int(row[0]) == id:
+          break
+      index_to_edit += 1
+    csv_listings.seek(0)
+    contents = csv_listings.readlines()
+    try:
+      contents.pop(index_to_edit)
+    except:
+      print("Stdexp error")
+    new_listing = str(id)+','+row[1]+','+row[2]+','+row[3]+','+row[4]+','+row[5]+','+row[6]+','+row[7]+','+row[8]+','+row[9]+','+row[10]+','+str(new_count)+','+row[12]+','+row[13]+','+row[14]+','+row[15]+'\n'
+    contents.insert(index_to_edit, new_listing)
+    contents = "".join(contents)
+    with codecs.open("app/listings.csv", "w", encoding="utf-8", errors='ignore') as f:
+      f.write(contents)

@@ -2,7 +2,7 @@ from flask import request, jsonify, make_response
 from time import perf_counter
 from flask_restful import Resource
 from app import globals
-from .parser_listings import listings, search_listings, add_listing, edit_listing, remove_listing, get_average, get_cheap3, get_expensive3, get_popular_madrid, get_room_madrid, get_popular_neighborhood, get_room_pop_neighborhoods, get_global_average
+from .parser_listings import listings, search_listings, add_listing, edit_listing, remove_listing, get_average, get_cheap3, get_expensive3, get_popular_madrid, get_room_madrid, get_popular_neighborhood, get_room_pop_neighborhoods, get_global_average, add_review
 
 class Listings(Resource):
     def post(self):
@@ -193,17 +193,17 @@ class Analytics(Resource):
 #         else:
 #             return "No JSON received", 400
 
-# class AddReview(Resource):
-#     def post(self):
-#         if request.is_json:
-#             req = request.get_json()
-#             # add_review(req.get('listing_id'), req.get('comment'))
-#             # expected add review function that adds review to csv file given passed listing id and comment parameters
-#             res = make_response(200)
-#             res.headers.add('Access-Control-Allow-Origin', '*')
-#             return res
-#         else:
-#             return "No JSON received", 400
+class AddReview(Resource):
+    def post(self):
+        if request.is_json:
+            req = request.get_json()
+            add_review(req.get('id'))
+            # expected add review function that adds review to csv file given passed listing id and comment parameters
+            res = make_response(jsonify({}), 200)
+            res.headers.add('Access-Control-Allow-Origin', '*')
+            return res
+        else:
+            return "No JSON received", 400
 
 # class RemoveReview(Resource):
 #     def post(self):
