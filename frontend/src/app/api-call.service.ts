@@ -42,6 +42,11 @@ export class ApiCallService {
     return this.http.post<any>('http://127.0.0.1:5000/listings/edit', listingData);
   }
 
+  
+  addReviews(listingData){
+    return this.http.post<any>('http://127.0.0.1:5000/listings/addreviews', listingData);
+  }
+
   getReviews(searchData){
     //returns review data based on inputted searchData
     /*searchData = {
