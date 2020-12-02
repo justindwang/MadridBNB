@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ApiCallService } from '../api-call.service';
 
+import Chart from 'chart.js';
 
 @Component({
   selector: 'app-roomdist',
