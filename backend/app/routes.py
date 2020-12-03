@@ -10,7 +10,7 @@ def initialize_routes(api):
 
     api.add_resource(Analytics, "/analytics")
 
-    api.add_resource(AddReview, "/reviews")
+    api.add_resource(AddReview, "/listings/addreviews")
     
 
 
