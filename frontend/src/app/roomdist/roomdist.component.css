@@ -1,7 +1,15 @@
-h1{
+body{
+  font-family: sans-serif;
+}
 
+h2{
+  font-family: sans-serif;
+}
+
+
+h1{
   color: brown;
-  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+  font-family: sans-serif;
 
 }
 
@@ -61,4 +69,8 @@ h1{
 #neighborhood_room {
   display: none;
   width: 25%;
+}
+
+p {
+  font-family: sans-serif;
 }

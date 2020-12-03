@@ -1,14 +1,18 @@
+body {
+  font-family: sans-serif;
+}
+
+h2{
+  font-family: sans-serif;
+}
+
+
 
 h1 {
     color: brown;
-    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
     text-align: center;
-  }
-
-  h3{
-
-    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
-  }
+    font-family: sans-serif;
+}
 
 
 /* Add a black background color to the top navigation */
