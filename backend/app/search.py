@@ -20,38 +20,41 @@ class Listings(Resource):
             # e.g. access listing data "id" of 1st entry - response["listings"][0]["id"]
 
             for x in listings:
-                temp = {
-                    "id": x.id,
-                    "neighborhood": x.neighborhood,
-                    "roomType": x.room_type,
-                    "price": x.price
-                    # Accessors for each variable stored in a Listing Object
-                }
-                response['listings'].append(temp)
+                if (x != None):
+                    temp = {
+                        "id": x.id,
+                        "neighborhood": x.neighborhood,
+                        "roomType": x.room_type,
+                        "price": x.price
+                        # Accessors for each variable stored in a Listing Object
+                    }
+                    response['listings'].append(temp)
 
             response['average_price'] = get_average(listings)
 
             cheap3 = get_cheap3(listings)
             for x in cheap3:
-                temp1 = {
-                    "id": x.id,
-                    "neighborhood": x.neighborhood,
-                    "roomType": x.room_type,
-                    "price": x.price
-                    # Accessors for each variable stored in a Listing Object
-                }
-                response['cheap_listings'].append(temp1)
+                if (x != None):
+                    temp1 = {
+                        "id": x.id,
+                        "neighborhood": x.neighborhood,
+                        "roomType": x.room_type,
+                        "price": x.price
+                        # Accessors for each variable stored in a Listing Object
+                    }
+                    response['cheap_listings'].append(temp1)
 
             expensive3 = get_expensive3(listings)
             for x in expensive3:
-                temp2 = {
-                    "id": x.id,
-                    "neighborhood": x.neighborhood,
-                    "roomType": x.room_type,
-                    "price": x.price
-                    # Accessors for each variable stored in a Listing Object
-                }
-                response['expensive_listings'].append(temp2)
+                if (x != None):
+                    temp2 = {
+                        "id": x.id,
+                        "neighborhood": x.neighborhood,
+                        "roomType": x.room_type,
+                        "price": x.price
+                        # Accessors for each variable stored in a Listing Object
+                    }
+                    response['expensive_listings'].append(temp2)
             
             res = make_response(jsonify(response), 200)
             res.headers.add('Access-Control-Allow-Origin', '*')
