@@ -23,7 +23,7 @@ id,name,host_id,host_name,neighbourhood_group,neighbourhood,latitude,longitude,r
 23,Cozy attic flat with intimate rooftop terrace,364585,Vin,Centro,Embajadores,40.40894,-3.69766,Entire home/apt,100,2,140,7/13/2019,1.39,5,165
 24,Amazing apt in the historic center,487095,Alicia Y Carlos,Centro,Palacio,40.41218,-3.71369,Entire home/apt,110,2,195,9/15/2019,1.95,1,292
 25,Bedroom in Chueca Madrid,495849,Raul,Centro,Justicia,40.42422,-3.69538,Private room,50,2,86,6/9/2019,0.85,1,346
-26,*** MALASAA B&B ***,499977,Charo,Centro,Universidad,40.42462,-3.70352,Private room,32,1,594,9/14/2019,5.83,3,321
+26,*** MALASAA B&B ***,499977,Charo,Centro,Universidad,40.42462,-3.70352,Private room,32,1,596,9/14/2019,5.83,3,321
 27, Room for rent in Madrid,510570,Laura / Ismael,Tetun,Cuatro Caminos,40.45559,-3.69421,Private room,25,3,178,8/12/2019,1.99,1,261
 28,tico muy luminoso,527760,Diana,Fuencarral - El Pardo,Valverde,40.50116,-3.67119,Entire home/apt,60,2,3,6/24/2016,0.07,1,0
 29,NICE FLAT IN THE CENTER OF MADRID,5795235,Elise,Centro,Embajadores,40.40858,-3.70301,Entire home/apt,65,3,57,7/15/2019,0.79,4,323
@@ -20834,4 +20834,4 @@ id,name,host_id,host_name,neighbourhood_group,neighbourhood,latitude,longitude,r
 20834,Chueca  y gran va central,6903368,Miguel,Centro,Justicia,40.41973,-3.69666,Private room,75,1,0,,,5,268
 20835,1,2,3,4,Johnson,6,7,Entire home/apt,444,10,11,12,13,14,15
 20836,1,2,3,4,Johnson,6,7,Entire home/apt,6,10,11,12,13,14,15
-20837,1,2,3,4,ko,6,7,Entire home/apt,4,10,11,12,13,14,15
+20837,1,2,3,4,ko,6,7,Entire home/apt,4,10,11,12,13,14,1520838,1,2,3,4,sky,6,7,Entire home/apt,1,10,11,12,13,14,15
